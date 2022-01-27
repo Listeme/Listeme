@@ -1,13 +1,5 @@
 # Existing competitors:
 
-- Google Calendar
-- GoodNotes
-- Pomofocus: https://pomofocus.io
-- Notion
-
-Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do
-so?
-
 <table>
     <tr>
         <td>Competitor</td>

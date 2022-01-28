@@ -36,7 +36,9 @@ able to easily track her expenses so she can budget effectively.
 Frank is having a difficult time focusing on school work. He works for 5 minutes then gets distracted from
 the task at hand. He's having a hard time trying to find a way for him to not be distracted.
 
-# Key Principles Simplicity
+# Key Principles 
+
+#### Simplicity
 
 The product should provide a UI design that allows the users to easily understand and navigate the application’s
 features. The features should be reliable at all times.

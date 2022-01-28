@@ -1,12 +1,16 @@
 <table>
   <tr>
-   <td>User stories
+   <td><strong>User stories</strong>
    </td>
-   <td>Criteria of satisfaction
+   <td><strong>Criteria of satisfaction</strong>
+   </td>
+   <td><strong>Point Scale</strong>
    </td>
   </tr>
   <tr>
-   <td>As a user, I can log in to the web screen and check what I have for the day or look at the calendar.
+   <td><strong>As Frank, Joe, and Mimi, I can log in to the web screen and check what I have for the day or look at the calendar.</strong>
+<p>
+<strong>As Frank, Joe, and Mimi, I can create a new account so I can join Listeme and use the application.</strong>
    </td>
    <td>
 <ul>
@@ -16,12 +20,22 @@
 <li>Make sure it works for new signups
 
 <li>Make sure if the webapp is closed by a signed in user and reopened, the user should still be logged in and sent to the main page
+<ul>
+
+<li>The account information should be saved so the user can sign out and log in later
+
+<li>Each user’s notes, journal, and tasks should be saved on their account.
+</li>
+</ul>
 </li>
 </ul>
    </td>
+   <td>
+    5
+   </td>
   </tr>
   <tr>
-   <td>As a user, I can make a new note so I can keep track of what I did or learned
+   <td>As Frank, I can make a new note so I can keep track of what I did or learned
    </td>
    <td>
 <ul>
@@ -34,9 +48,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As a user, I should be able to set a timer for the Pomodoro section so I get to set myself the time limit to do it
+   <td><strong>As Mimi, I should be able to set a timer for the Pomodoro section so I get to set myself the time limit to do it</strong>
    </td>
    <td>
 <ul>
@@ -47,9 +63,12 @@
 </li>
 </ul>
    </td>
+   <td>
+    5
+   </td>
   </tr>
   <tr>
-   <td>As a user, I should be able to add tasks to the Pomodoro section so I can keep track of what tasks I need to do
+   <td>As Mimi, I should be able to add tasks to the Pomodoro section so I can keep track of what tasks I need to do
    </td>
    <td>
 <ul>
@@ -62,22 +81,26 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As a user, I can create a new account so I can join Listeme and use the application.
+   <td>As Frank, I should be able to add and remove tasks and schedule tasks from the to-do list. These items should then appear on pomodoro. 
    </td>
    <td>
 <ul>
 
-<li>The account information should be saved so the user can sign out and log in later
+<li>Add and remove tasks
 
-<li>Each user’s notes, journal, and tasks should be saved on their account.
+<li>Schedule tasks
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As Mimi, I can change tabs by clicking Pomodoro, calendar, task, or feed so it is easy to check what I want.
+   <td><strong>As Mimi, I can change tabs by clicking Pomodoro, calendar, task, or feed so it is easy to check what I want. (This is essentially the main interface) </strong>
    </td>
    <td>
 <ul>
@@ -87,6 +110,9 @@
 <li>Changes are saved when switching tabs, so user can go back after
 </li>
 </ul>
+   </td>
+   <td>
+    5
    </td>
   </tr>
   <tr>
@@ -100,6 +126,8 @@
 <li>(optional) Should be able to select and delete multiple notes
 </li>
 </ul>
+   </td>
+   <td>
    </td>
   </tr>
   <tr>
@@ -116,9 +144,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As Joe, I can see all the things in the feed so I can see most things in one view.
+   <td>As Joe, I can see all the things in the feed so I can see most things in one view. 
    </td>
    <td>
 <ul>
@@ -126,6 +156,8 @@
 <li>Should be able to see the first few items from notes, tasks, and calendar events on the main feed
 </li>
 </ul>
+   </td>
+   <td>
    </td>
   </tr>
   <tr>
@@ -138,9 +170,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As a user, I would like to customize the home page for my own comforts
+   <td>As a Joe, I would like to customize the home page for my own comforts
    </td>
    <td>
 <ul>
@@ -151,9 +185,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As Joe, I can take a journal of the day so I get to check back later.
+   <td><strong>As Joe, I can take a journal of the day so I get to check back later.</strong>
    </td>
    <td>
 <ul>
@@ -163,6 +199,9 @@
 <li>Allow Joe to move the journal to another folder
 </li>
 </ul>
+   </td>
+   <td>
+    5
    </td>
   </tr>
   <tr>
@@ -175,9 +214,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As Frank and Mimi, I would like a reminder for tasks so I don’t forget about it.
+   <td><strong>As Frank and Mimi, I would like a reminder for tasks so I don’t forget about it.</strong>
    </td>
    <td>
 <ul>
@@ -188,9 +229,12 @@
 </li>
 </ul>
    </td>
+   <td>
+    5
+   </td>
   </tr>
   <tr>
-   <td>As a user, I would like to be able to switch between different views in the calendar. The views would be the tasks I've accomplished for that day, the notes I have taken or stored for that day, and my schedule for the day. 
+   <td>As Frank, Mimi, and Joe, I would like to be able to switch between different views in the calendar. The views would be the tasks I've accomplished for that day, the notes I have taken or stored for that day, and my schedule for the day. 
    </td>
    <td>
 <ul>
@@ -203,9 +247,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As a user, I should be able to see the home screen and know what Listeme is about.
+   <td>As Frank, Joe, Mimi, I should be able to see the home screen and know what Listeme is about.
    </td>
    <td>
 <ul>
@@ -216,9 +262,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As a user, I should be able to switch the views from days to weeks or months. 
+   <td>As Joe, I should be able to switch the views from days to weeks or months. 
    </td>
    <td>
 <ul>
@@ -227,9 +275,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As a user, I want to be able to integrate in my Google calendar
+   <td>As Mimi and Frank, I want to be able to integrate in my Google calendar
    </td>
    <td>
 <ul>
@@ -238,9 +288,11 @@
 </li>
 </ul>
    </td>
+   <td>
+   </td>
   </tr>
   <tr>
-   <td>As a user, I can export notes and schedules as files
+   <td>As Mimi, I can export notes and schedules as files
    </td>
    <td>
 <ul>
@@ -250,6 +302,8 @@
 <li>Should be able to export the calendar as an ICS/CSV file
 </li>
 </ul>
+   </td>
+   <td>
    </td>
   </tr>
   <tr>
@@ -261,6 +315,8 @@
 <li>Should be able to change the priority of the tasks
 </li>
 </ul>
+   </td>
+   <td>
    </td>
   </tr>
 </table>

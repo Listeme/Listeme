@@ -1,16 +1,20 @@
+
+
+
+**Sprint 1**
+
+
 <table>
   <tr>
    <td><strong>User stories</strong>
    </td>
    <td><strong>Criteria of satisfaction</strong>
    </td>
-   <td><strong>Point Scale</strong>
+   <td><strong>Difficulty</strong>
    </td>
   </tr>
   <tr>
-   <td><strong>As Frank, Joe, and Mimi, I can log in to the web screen and check what I have for the day or look at the calendar.</strong>
-<p>
-<strong>As Frank, Joe, and Mimi, I can create a new account so I can join Listeme and use the application.</strong>
+   <td>As Frank, Joe, and Mimi, I can create a new account so I can join Listeme and use the application.
    </td>
    <td>
 <ul>
@@ -20,18 +24,96 @@
 <li>Make sure it works for new signups
 
 <li>Make sure if the webapp is closed by a signed in user and reopened, the user should still be logged in and sent to the main page
-<ul>
+
 
 <li>The account information should be saved so the user can sign out and log in later
 
 <li>Each user’s notes, journal, and tasks should be saved on their account.
 </li>
+</li>
 </ul>
+   </td>
+   <td>
+    3
+   </td>
+  </tr>
+  <tr>
+   <td>As Mimi, I should be able to set a timer for the Pomodoro section so I get to set myself the time limit to do it
+   </td>
+   <td>
+<ul>
+
+<li>Should be able to adjust time
+
+<li>Timer should make some sort of sound when it runs out
+</li>
+</ul>
+   </td>
+   <td>
+    2
+   </td>
+  </tr>
+  <tr>
+   <td>As Mimi, I can change tabs by clicking Pomodoro, calendar, task, or feed so it is easy to check what I want. (This is essentially the main interface) 
+   </td>
+   <td>
+<ul>
+
+<li>Should be able to switch between tabs anytime at will
+
+<li>Changes are saved when switching tabs, so user can go back after
+</li>
+</ul>
+   </td>
+   <td>
+    2
+   </td>
+  </tr>
+  <tr>
+   <td>As Joe, I can take a journal of the day so I get to check back later.
+   </td>
+   <td>
+<ul>
+
+<li>Create a new journal and by default store it in the default journal location
+
+<li>Allow Joe to move the journal to another folder
+</li>
+</ul>
+   </td>
+   <td>
+    4
+   </td>
+  </tr>
+  <tr>
+   <td>As Frank, I should be able to add and remove tasks and schedule tasks from the to-do list. These items should then appear on pomodoro. 
+   </td>
+   <td>
+<ul>
+
+<li>Add and remove tasks
+
+<li>Schedule tasks
 </li>
 </ul>
    </td>
    <td>
     5
+   </td>
+  </tr>
+</table>
+
+
+
+
+**Sprint 2** 
+
+
+<table>
+  <tr>
+   <td><strong>User stories</strong>
+   </td>
+   <td><strong>Criteria of satisfaction</strong>
    </td>
   </tr>
   <tr>
@@ -48,23 +130,59 @@
 </li>
 </ul>
    </td>
-   <td>
-   </td>
   </tr>
   <tr>
-   <td><strong>As Mimi, I should be able to set a timer for the Pomodoro section so I get to set myself the time limit to do it</strong>
+   <td>As Joe, I can delete notes to clean up my note workspaces
    </td>
    <td>
 <ul>
 
-<li>Should be able to adjust time
+<li>Notes will not be available on the home screen and/or notes section
 
-<li>Timer should make some sort of sound when it runs out
+<li>Notes will be moved to a recycle area 
+
+<li>Only notes selected will be deleted
 </li>
 </ul>
    </td>
+  </tr>
+  <tr>
+   <td>As Frank and Mimi, I would like a reminder for tasks so I don’t forget about it.
+   </td>
    <td>
-    5
+<ul>
+
+<li>Should be able to set a future time/date for when the user will be notified
+
+<li>Should play a sound when the reminder time arrives
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>As Frank, Joe, Mimi, I should be able to see the index page and know what Listeme is about.
+   </td>
+   <td>
+<ul>
+
+<li>Should be able to see a description of what Listeme is
+
+<li>Should be able to see Logo of Listeme
+</li>
+</ul>
+   </td>
+  </tr>
+</table>
+
+
+**Sprint 3**
+
+
+<table>
+  <tr>
+   <td><strong>User stories</strong>
+   </td>
+   <td><strong>Criteria of satisfaction</strong>
    </td>
   </tr>
   <tr>
@@ -81,39 +199,6 @@
 </li>
 </ul>
    </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>As Frank, I should be able to add and remove tasks and schedule tasks from the to-do list. These items should then appear on pomodoro. 
-   </td>
-   <td>
-<ul>
-
-<li>Add and remove tasks
-
-<li>Schedule tasks
-</li>
-</ul>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td><strong>As Mimi, I can change tabs by clicking Pomodoro, calendar, task, or feed so it is easy to check what I want. (This is essentially the main interface) </strong>
-   </td>
-   <td>
-<ul>
-
-<li>Should be able to switch between tabs anytime at will
-
-<li>Changes are saved when switching tabs, so user can go back after
-</li>
-</ul>
-   </td>
-   <td>
-    5
-   </td>
   </tr>
   <tr>
    <td>As Frank, I can delete tasks to the Pomodoro section to mark off tasks I’ve finished
@@ -126,111 +211,6 @@
 <li>(optional) Should be able to select and delete multiple notes
 </li>
 </ul>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>As Joe, I can delete notes to clean up my note workspaces
-   </td>
-   <td>
-<ul>
-
-<li>Notes will not be available on the home screen and/or notes section
-
-<li>Notes will be moved to a recycle area 
-
-<li>Only notes selected will be deleted
-</li>
-</ul>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>As Joe, I can see all the things in the feed so I can see most things in one view. 
-   </td>
-   <td>
-<ul>
-
-<li>Should be able to see the first few items from notes, tasks, and calendar events on the main feed
-</li>
-</ul>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>As Frank, I can mute all the things that are distracting when the task time schedule begins.
-   </td>
-   <td>
-<ul>
-
-<li>Allow app to disable internet features and suppress notifications
-</li>
-</ul>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>As a Joe, I would like to customize the home page for my own comforts
-   </td>
-   <td>
-<ul>
-
-<li>Objects on the home screen can be rearranged
-
-<li>User will be able to toggle certain objects and sections as preferred
-</li>
-</ul>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td><strong>As Joe, I can take a journal of the day so I get to check back later.</strong>
-   </td>
-   <td>
-<ul>
-
-<li>Create a new journal and by default store it in the default journal location
-
-<li>Allow Joe to move the journal to another folder
-</li>
-</ul>
-   </td>
-   <td>
-    5
-   </td>
-  </tr>
-  <tr>
-   <td>As Mimi, I can check the calendar in more detail by checking the calendar tab.
-   </td>
-   <td>
-<ul>
-
-<li>The calendar should display the current year/month/day, being able to expand dates to see any tasks/notes set for that day
-</li>
-</ul>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td><strong>As Frank and Mimi, I would like a reminder for tasks so I don’t forget about it.</strong>
-   </td>
-   <td>
-<ul>
-
-<li>Should be able to set a future time/date for when the user will be notified
-
-<li>Should play a sound when the reminder time arrives
-</li>
-</ul>
-   </td>
-   <td>
-    5
    </td>
   </tr>
   <tr>
@@ -247,22 +227,53 @@
 </li>
 </ul>
    </td>
-   <td>
-   </td>
   </tr>
   <tr>
-   <td>As Frank, Joe, Mimi, I should be able to see the home screen and know what Listeme is about.
+   <td>As Mimi, I can check the calendar in more detail by checking the calendar tab.
    </td>
    <td>
 <ul>
 
-<li>Should be able to see a description of what Listeme is
-
-<li>Should be able to see Logo of Listeme
+<li>The calendar should display the current year/month/day, being able to expand dates to see any tasks/notes set for that day
 </li>
 </ul>
    </td>
+  </tr>
+</table>
+
+
+**Sprint 4**
+
+
+<table>
+  <tr>
+   <td><strong>User stories</strong>
+   </td>
+   <td><strong>Criteria of satisfaction</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>As Joe, I can see all the things in the feed so I can see most things in one view. 
+   </td>
    <td>
+<ul>
+
+<li>Should be able to see the first few items from notes, tasks, and calendar events on the main feed
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>As a Joe, I would like to customize the home page for my own comforts
+   </td>
+   <td>
+<ul>
+
+<li>Objects on the home screen can be rearranged
+
+<li>User will be able to toggle certain objects and sections as preferred
+</li>
+</ul>
    </td>
   </tr>
   <tr>
@@ -275,8 +286,6 @@
 </li>
 </ul>
    </td>
-   <td>
-   </td>
   </tr>
   <tr>
    <td>As Mimi and Frank, I want to be able to integrate in my Google calendar
@@ -287,8 +296,6 @@
 <li>Should be able to view events from the connected Google calendar in Listeme
 </li>
 </ul>
-   </td>
-   <td>
    </td>
   </tr>
   <tr>
@@ -303,8 +310,6 @@
 </li>
 </ul>
    </td>
-   <td>
-   </td>
   </tr>
   <tr>
    <td>As Joe, I can set priority to the tasks and the app will list the tasks by priority<sub> </sub>
@@ -316,7 +321,17 @@
 </li>
 </ul>
    </td>
+  </tr>
+  <tr>
+   <td>As Frank, I can mute all the things that are distracting when the task time schedule begins.
+   </td>
    <td>
+<ul>
+
+<li>Allow app to disable internet features and suppress notifications
+</li>
+</ul>
    </td>
   </tr>
 </table>
+

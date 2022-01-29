@@ -39,10 +39,14 @@ And to run the server:
 npm run start
 ```
 
-## Contributing 
+## Contributing
 New contributors are welcome, please join our discord to get started and discuss what you can implement.
 
 [Discord Link](https://discord.gg/4byF9BUyY6)
+
+We use Jira to track issues and user stories.
+
+Our branches are names as follows: `devname-featurename`
 
 For pull requests please make sure you follow the agreements written in `docs/sprint0/done.md`
 And adhere to our pull request template in `/docs/pull_request_template.md`

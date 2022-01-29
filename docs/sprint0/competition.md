@@ -1,15 +1,8 @@
-
-
-
-
 # Competition
 
+## Google Calendar
 
-### Competitors
-
-# Google Calendar
-
-## Similarities:
+### Similarities:
 
 
 
@@ -19,13 +12,13 @@
 * Sort things into groups and color code recurring events.
 * Supports .ics format importing/exporting.
 
-## Differences:
+### Differences:
 
 
 
 * Able to pin notes created at certain events directly to either the event or to the date
 
-## Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do so?
+### Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do so?
 
 
 
@@ -33,9 +26,9 @@
 * Forces the users to use G suite to get the full range of services that the user needs. 
 * They would have to be able to combine all the features into one thing rather than being spread across multiple services.
 
-# GoodNotes
+## GoodNotes
 
-## Similarities:
+### Similarities:
 
 
 
@@ -44,14 +37,14 @@
 * Able to show when the note was created
 * Can organize notes into folders
 
-## Differences:
+### Differences:
 
 
 
 * Rather than saving it separately somewhere, the notes are saved to calendar.
 * Git style version control.
 
-## Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do so?
+### Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do so?
 
 
 
@@ -59,16 +52,16 @@
 * Exclusive to Apple products.
 * Would need to be able to sync across various platforms.
 
-# Pomofocus 
+## Pomofocus 
 
-## Similarities:
+### Similarities:
 
 
 
 * Able to use the timer.
 * Sync the tasks with the pomodoro time cycles.
 
-## Differences
+### Differences
 
 
 
@@ -76,7 +69,7 @@
 * Remind the user about their tasks at their chosen time.
 * Able to block distracting websites during study sessions (Social Media websites, video streaming sites etc.).
 
-## Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do so?
+### Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do so?
 
 
 

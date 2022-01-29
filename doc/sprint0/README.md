@@ -44,5 +44,5 @@ New contributors are welcome, please join our discord to get started and discuss
 
 [Discord Link](https://discord.gg/4byF9BUyY6)
 
-For pull requests please make sure you follow the agreements written in docs/sprint0/done.md
-And adhere to our pull request template in /docs/pull_request_template.md
+For pull requests please make sure you follow the agreements written in `docs/sprint0/done.md`
+And adhere to our pull request template in `/docs/pull_request_template.md`

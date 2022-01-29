@@ -1,7 +1,7 @@
 
 
 
-**Sprint 1**
+# Sprint 1
 
 
 <table>
@@ -106,7 +106,7 @@
 
 
 
-**Sprint 2** 
+# Sprint 2 
 
 
 <table>
@@ -175,7 +175,7 @@
 </table>
 
 
-**Sprint 3**
+# Sprint 3
 
 
 <table>
@@ -242,7 +242,7 @@
 </table>
 
 
-**Sprint 4**
+# Sprint 4
 
 
 <table>

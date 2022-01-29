@@ -1,7 +1,11 @@
+# Done
+
+
 These are the set of rules we have agreed on that we defined as a user story:
 
-  1. All the required features for the user story are met with great satisfaction.
-  2. The code that is written for each user story is neatly documented and well written.
-  3. The code pertaining the user story is reviewed extensively and must be approved by one or more members.
-  4. The features for the user story are required to pass all the tests that are written for the specific story.
-  5. The working user story branch is to be merged into the main branch without any conflicts. 
+1. A test suite must be written, and all the tests must've passed.
+2. All the features of a given user story must be implemented.
+3. Code must be documented.
+4. Code has to reviewed by 2 or more group members.
+5. All merge conflicts must be resolved.
+6. Product manager must agree that the feature implemented comply's with the user story.

@@ -77,7 +77,4 @@
             </ul>
         </td>
     </tr>
-    <tr>
-        <td>Notion</td>
-    </tr>
 </table>

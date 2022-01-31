@@ -1,0 +1,43 @@
+.login {
+	position: absolute;
+	top: 8px;
+	right: 16px;
+	background: #555b6e;
+	font-size: 24px;
+	margin-top: 1px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: 0.2s ease-in;
+	cursor: pointer;
+	padding: 7px 10px;
+    color: white;
+}
+
+.login:hover {
+	background: #000000;
+}
+
+/*
+Create a sign up button beside login button
+
+*/
+.signup {
+    position: absolute;
+    top: 8px;
+    right: 110px;
+    background: #555b6e;
+    font-size: 24px;
+    margin-top: 1px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+    padding: 7px 10px;
+    color: white;
+}
+
+.signup:hover {
+	background: #000000;
+}

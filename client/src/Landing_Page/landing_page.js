@@ -1,16 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 import "./landing_page.css";
+import Button from "../components/button";
 
-export default class LandingPage extends Component {
-	render() {
-		return (
-			<div>
-				<ul class="flex-container">
-					
-                    <li className="first">Login</li>
-                    <li>Signup</li>
-				</ul>
+export default function LandingPage(props) {
+	return (
+		<div>
+			<div class="flex-container">
+				<Button handler={login_handler}>Login</Button>
+				<Button handler = {singup_handler}>Signup</Button>
 			</div>
-		);
-	}
+		</div>
+	);
+}
+
+// Function redirects page to login
+function login_handler() {
+	window.location.href = "/login";
+}
+
+// Function redirects page to singup
+function singup_handler() {
+	window.location.href = "/signup";
 }

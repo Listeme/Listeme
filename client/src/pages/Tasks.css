@@ -3,7 +3,7 @@
   }
 
   .Tasks-spacer {
-      background-color: #86acf8;
+      /* background-color: #86acf8; */
       min-height: 10vh;
       width: 100%;
       display: flex;
@@ -16,7 +16,7 @@
   }
   
   .Tasks-header {
-    background-color: #86acf8;
+    /* background-color: #86acf8; */
     min-height: 100vh;
     display: flex;
     flex-direction: column;

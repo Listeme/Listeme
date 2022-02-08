@@ -7,7 +7,7 @@ export default function LandingPage(props) {
 		<div>
 			<div class="flex-container">
 				<Button handler={login_handler}>Login</Button>
-				<Button handler = {singup_handler}>Signup</Button>
+				<Button handler={singup_handler}>Signup</Button>
 			</div>
 		</div>
 	);

@@ -1,15 +1,36 @@
 import React from "react";
-import "./landing_page.css";
-import Button from "../../components/button";
+import { Flex, Box, Spacer, Button} from "@chakra-ui/react";
 
 export default function LandingPage(props) {
-	return (
-		<div>
-			<div class="flex-container">
-				<Button handler={login_handler}>Login</Button>
-				<Button handler={singup_handler}>Signup</Button>
-			</div>
-		</div>
+	const cs = {background: "#555b6e",
+		fontSize: "20px",
+		marginTop: "10px",
+		borderRadius: "25px",
+		transition: "0.2s ease-in",
+		cursor: "pointer",
+		padding: "7px 10px",
+		color: "white",
+		boxShadow: "0 8px #999",
+		marginRight: "25px",
+		fontWeight: "normal",
+	};
+	const hov = {bg: "#333131"};
+	const flex_css = {
+		display: "flex",
+		flexFlow: "row wrap",
+		justifyContent: "flex-start",
+	};
+	return (		
+			<Flex css={flex_css}
+			>
+				<Spacer />
+				<Box>
+					<Button css={cs} onClick={signup_handler} _hover = {hov}>
+					Sign Up
+					</Button>
+					<Button css={cs} onClick={login_handler} _hover = {hov}>Log in</Button>
+				</Box>
+			</Flex>
 	);
 }
 
@@ -19,6 +40,6 @@ function login_handler() {
 }
 
 // Function redirects page to singup
-function singup_handler() {
+function signup_handler() {
 	window.location.href = "/signup";
 }

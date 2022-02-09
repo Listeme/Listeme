@@ -1,5 +1,5 @@
 import React from "react";
-import "./signup_page.css";
+
 
 export default function SignupPage(props) {
     return (

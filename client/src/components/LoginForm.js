@@ -8,39 +8,18 @@ import {
     Input,
     Button,
     Link,
-    FormHelperText,
+    // FormHelperText,
     Text,
   } from "@chakra-ui/react";
-  import { useForm } from "react-hook-form";
 
 export default function LoginForm() {
-    const {
-        handleSubmit,
-        register,
-        formState: { isSubmitting },
-    } = useForm();
-    async function login(values) {
-        var form = new FormData();
-        form.append("email", values.email);
-        form.append("password", values.password);
-        // await axios
-        //   .post("api/user/auth", form)
-        //   .then((response) => {
-        //     if (response.data.token) {
-        //       localStorage.setItem("token", response.data.token);
-        //       axios.defaults.headers.common["Authorization"] =
-        //         "Bearer " + response.data.token;
-        //     }
-        //     props.onLogin(values.email.toString());
-        //   })
-        //   .catch(() => {});
-      }
 	return (
         <Flex
           minHeight="100vh"
           width="full"
           justifyContent="center"
           alignItems="center"
+          
         >
           <Box>
             <Box
@@ -50,21 +29,18 @@ export default function LoginForm() {
               borderRadius={4}
               boxShadow="lg"
               width="full"
-              maxWidth="500px"
+              maxWidth="1000px"           
             >
               <Box textAlign="center" mb={4}>
                 <Heading size="md">Login</Heading>
               </Box>
               <Box>
-                <form onSubmit={handleSubmit(login)}>
+                <form>
                   <FormControl>
                     <FormLabel>Email</FormLabel>
                     <Input
                       type="email"
                       placeholder="Enter Your Email"
-                      {...register("email", {
-                        required: "This is required",
-                      })}
                     />
                   </FormControl>
                   <FormControl mt={4}>
@@ -72,22 +48,15 @@ export default function LoginForm() {
                     <Input
                       type="password"
                       placeholder="Enter Your Password"
-                      {...register("password", {
-                        required: "This is required",
-                        minLength: {
-                          value: 8,
-                          message: "Minimum length should be 8",
-                        },
-                      })}
                     />
-                    <FormHelperText>
+                    {/* <FormHelperText>
                       Please ensure you have verified via email. If you don't see
                       the email, please re-register.
-                    </FormHelperText>
+                    </FormHelperText> */}
                   </FormControl>
     
                   <Box my={4}>
-                    <Button width="full" isLoading={isSubmitting} type="submit">
+                    <Button width="full" type="submit">
                       Login
                     </Button>
                   </Box>
@@ -102,11 +71,9 @@ export default function LoginForm() {
                   </Link>
                 </form>
                 <Box textAlign="center">
-                  <Link
-                    onClick={() => {
+                  <Link onClick={() => {
                       window.location.href = "/forgotpassword";
-                    }}
-                  >
+                    }}>
                     <Text>Forgot my password</Text>
                   </Link>
                 </Box>

@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
+import TextField from '@mui/material/TextField';
+import { useFormControl } from '@mui/material/FormControl';
 
 function createData(name, due, notes) {
     return { name, due, notes };
@@ -45,6 +47,26 @@ function createData(name, due, notes) {
                 <TableCell align="right">{row.notes}</TableCell>
               </TableRow>
             ))}
+            <TableRow>
+              <TableCell component="th" scope="row"> <TextField
+                id="add_task"
+                label="Add Task"
+                defaultValue=""
+                variant="standard"/>    
+              </TableCell>
+              <TableCell align="right"> <TextField
+                id="due_date"
+                label="Due Date"
+                defaultValue=""
+                variant="standard"/>    
+              </TableCell>
+              <TableCell align="right"> <TextField
+                id="notes"
+                label="Notes"
+                defaultValue=""
+                variant="standard"/>    
+              </TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>

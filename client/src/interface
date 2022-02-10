@@ -1,0 +1,59 @@
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+// import { makeStyles } from '@mui/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+// const useStyles = makeStyles({
+//   buttons: {
+//     color: 'purple',
+//     justifyContent: 'center',
+//     backgroundColor: 'yellow',
+    
+//   }
+// });
+// this is a function
+
+const { palette } = createTheme();
+const { augmentColor } = palette;
+const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
+const theme = createTheme({
+  palette: {
+    anger: createColor('#F40B27'),
+    apple: createColor('#5DBA40'),
+    steelBlue: createColor('#5C76B7'),
+    violet: createColor('#BC00A3'),
+    cats: createColor('#5DBA40')
+  },
+});
+function App() {
+  // const classes = useStyles(); // useStyles is a function that applies the classes 
+  
+  return (
+    <div className="App"> 
+     
+    <Stack direction="row" spacing={4}> 
+    <ThemeProvider theme={theme}>
+      <Button color="violet" position="sticky" variant="contained" >Feed</Button>
+      <Button position="sticky" variant="contained">Pomodoro</Button>
+      <Button position="sticky" variant="contained">Journal</Button>
+      <Button position="sticky" variant="contained">Calendar</Button>
+      <Button position="sticky" variant="contained">Notes</Button>
+      <Button position="sticky" variant="contained">Tasks</Button>
+    </ThemeProvider>
+  </Stack>
+  <div> 
+    
+    
+  </div>
+
+</div>
+  
+  );
+}
+
+export default App;
+  // {/* apply the properties of the button within the class */
+    // {/* apply the properties of the button within the class */}
+        // {/* the stack element is from the mat libary; you wrap the components in this class */}
+    // {/* We also have this place where we can  */}

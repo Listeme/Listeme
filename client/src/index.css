@@ -54,9 +54,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 15rem;
-    width: 15rem;
-    border-radius: 7.5rem;
+    height: 10rem;
+    width: 20rem;
     color:#efefef;
     background: #151932;
     font-size: 3.5rem;

@@ -4,8 +4,8 @@ import { SettingContext } from '../context/SettingContext';
 const Set = () => {
     const {updateExecute} = useContext(SettingContext)
     const [newTimer, setNewTimer] = useState({
-        work: 20,
-        break: 10,
+        work: 20.00,
+        break: 10.00,
         active: 'work'
     })
 

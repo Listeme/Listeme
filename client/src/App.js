@@ -14,7 +14,6 @@ function App() {
   return (
     <ChakraProvider theme={font_theme}>      
       <ToggleColorMode/>    
-      
       <BrowserRouter>
         <Routes>
           

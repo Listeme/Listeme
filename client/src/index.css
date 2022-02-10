@@ -1,10 +1,107 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  .container {
+    color:#000003;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgb(0, 0, 0);
+    background: radial-gradient(#9526a3 30%, #520561 70%); 
+  }
+  
+  .container h1 {
+    font-size:2.6rem;
+    margin-bottom:0.2rem;
+  }
+  
+  .container .labels {
+    list-style: none;
+    display: flex;
+    text-transform: uppercase;
+    font-size: .8rem;
+    padding:.3rem .3rem;
+    background-color: #0C0E1B;
+    border-radius: 1.5rem;
+  }
+  
+  .active-label {
+    color: #0C0E1B;
+    background-color: #FE6F6B;
+  }
+  
+  .timer-container {
+    display: flex;
+    flex:2;
+    align-items: top;
+    justify-content: top;
+  }
+  
+  .time-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 7.5rem;
+    color:#efefef;
+    background: #151932;
+    font-size: 3.5rem;
+    box-shadow: 1rem 1.5rem 2rem rgba(182, 88, 88, 0.6)
+  }
+  
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:2rem
+  }
+  
+  button {
+    color:#ff0101;
+    font-size:0.8rem;
+    padding: 0.5rem 1.2rem;
+    border:none;
+    border-radius:3rem;
+    margin:0.2rem;;
+    background:#2739ad;
+    min-width: 80px;
+    cursor: pointer;
+  }
+  
+  .button-wrapper button.activve {
+    color: #0C0E1B;
+    background-color: #2e39b1;
+    border: 1px solid #283cbe;
+  }
+  .form-container {
+    text-align: center;
+  }
+  .input-wrapper {
+    margin: 1.5rem;
+  }
+  .input-wrapper input {
+    height: 30px;
+    width: 30px;
+    padding: 2rem;
+    background-color: #0d0c0e;
+    color:#ffffff;
+    border: none;
+    border-radius: 50%;
+    margin-right: 0.3rem;
+    text-align: center;
+    font-size: 14pt;
+  }

@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 export const SettingContext = createContext()
-const SettingContextProvider = (props) => {
+function SettingContextProvider(props) {
 
     const [pomodoro, setPomodoro] = useState(0)
     const [executing, setExecuting] = useState({})
@@ -60,6 +60,10 @@ const SettingContextProvider = (props) => {
         return `${minutes}m: ${seconds}s`
     }
 
+    function stopAnimate(){
+        setStartAnimate(false)
+    }
+
     return (
     <SettingContext.Provider 
     value={{
@@ -72,7 +76,8 @@ const SettingContextProvider = (props) => {
         pauseTimer,
         SettingBtn,
         setCurrentTimer,
-        children
+        children,
+        stopAnimate
         }}>
         {props.children}
     </SettingContext.Provider>

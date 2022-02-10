@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { SettingContext } from '../context/SettingContext';
-import Button from './Button'
 
-const Set = () => {
+const SetPomodoro = () => {
     const {updateExecute} = useContext(SettingContext)
     const [newTimer, setNewTimer] = useState({
         work: 20,
@@ -40,15 +39,15 @@ const Set = () => {
     }
     return (
         <div className="form-container">
-            <form noValidate>
+            <form noValidate onSubmit={handleSubmit}>
                 <div className="input-wrapper">
                     <input className="input" name="work" onChange={handleChange} value={newTimer.work}/>
                     <input className="input" name="break" onChange={handleChange} value={newTimer.break}/>
                 </div>
-                <Button title="Set Timer" _callback={handleSubmit} />
+                <button type='submit'>Set Timer</button>
             </form>
         </div>
     )
 };
 
-export default Set
+export default SetPomodoro

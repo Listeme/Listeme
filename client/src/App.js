@@ -8,6 +8,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import ToggleColorMode from './components/ColorMode';
 import font_theme from './font_theme';
+import TimerPage from './pages/TimerPage';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage/>} />
           <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
+          <Route path="/timer" element={<TimerPage/>} />
           <Route path="*"
           element={<Navigate to="/" />}
           />

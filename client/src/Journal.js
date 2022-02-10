@@ -2,6 +2,7 @@ import './Journal.css';
 import { createEditor, Editor, Transforms, Text } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 import { useCallback, useMemo, useState } from 'react';
+import FolderTree from 'react-folder-tree';
 
 // define our own custom helpers
 const CustomEditor = {
@@ -77,112 +78,6 @@ const CustomEditor = {
     },
 }
 
-function Journal() {
-    // create a Slate editor object that won't change between renders
-    const editor = useMemo(() => withReact(createEditor()), [])
-
-    // keep track of state for the value of the editor
-    const [value, setValue] = useState([
-        {
-            type: 'paragraph',
-            children: [{ text: 'This is the new default' }]
-        }
-    ])
-
-    const renderElement = useCallback(props => {
-        switch (props.element.type) {
-            case 'code':
-                return <CodeElement {...props} />
-            default:
-                return <DefaultElement {...props} />
-        }
-    }, [])
-
-    const renderLeaf = useCallback(props => {
-        return <Leaf {...props} />
-    }, [])
-
-    // render the Slate context
-    return (
-        <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-            <div id="editorToolbar">
-                <button
-                  onMouseDown={event => {
-                      event.preventDefault()
-                      CustomEditor.toggleBoldMark(editor)
-                  }}
-                >
-                  Bold
-                </button>
-                <button
-                  onMouseDown={event => {
-                      event.preventDefault()
-                      CustomEditor.toggleItalicMark(editor)
-                  }}
-                >
-                  Italics
-                </button>
-                <button
-                  onMouseDown={event => {
-                      event.preventDefault()
-                      CustomEditor.toggleUnderlineMark(editor)
-                  }}
-                >
-                  Underline
-                </button>
-                <button
-                  onMouseDown={event => {
-                      event.preventDefault()
-                      CustomEditor.toggleCodeBlock(editor)
-                  }}
-                >
-                  Code Block
-                </button>
-            </div>
-            <Editable
-                // pass in renderElement
-                renderElement={renderElement}
-                renderLeaf={renderLeaf}
-                onKeyDown={event => {
-                    if (!event.ctrlKey) {
-                        return
-                    }
-
-                    switch (event.key) {
-                        case 'q': {
-                            console.log("pressed `")
-                            event.preventDefault()
-                            CustomEditor.toggleCodeBlock(editor)
-                            break
-                        }
-
-                        case 'b': {
-                            event.preventDefault()
-                            CustomEditor.toggleBoldMark(editor)
-                            break
-                        }
-
-                        case 'i': {
-                            event.preventDefault()
-                            CustomEditor.toggleItalicMark(editor)
-                            break
-                        }
-
-                        case 'u': {
-                            event.preventDefault()
-                            CustomEditor.toggleUnderlineMark(editor)
-                            break
-                        }
-
-                        default:
-                            break
-                    }
-                }}
-            />
-        </Slate>
-    );
-}
-
 // default component
 const DefaultElement = props => {
     return <p {...props.attributes}>{props.children}</p>
@@ -204,11 +99,141 @@ const Leaf = props => {
             style={{
                 fontWeight: props.leaf.bold ? 'bold' : 'normal',
                 fontStyle: props.leaf.italic ? 'italic' : 'normal',
-                textDecorationLine: props.leaf.underline ? 'underline' : 'normal'}}
+                textDecorationLine: props.leaf.underline ? 'underline' : 'normal'
+            }}
         >
             {props.children}
         </span>
     )
+}
+
+// demo folder tree contents until db is hooked up
+const treeState = {
+    name: 'Sample Workspace',
+    isOpen: true,
+    children: [
+        { name: 'Inside the sample workspace'},
+        { name: 'Man this is a lot of samples huh' },
+        { name: 'somebody\'s been working hard' },
+        { name: "our hypothetical user", children: [
+            {name: "sure is putting"},
+            {name: "the work eh?"},
+        ]},
+    ],
+};
+
+function Journal() {
+    // create a Slate editor object that won't change between renders
+    const editor = useMemo(() => withReact(createEditor()), [])
+
+    // keep track of state for the value of the editor
+    const [value, setValue] = useState([
+        {
+            type: 'paragraph',
+            children: [{ text: 'start typing here :D' }]
+        }
+    ])
+
+    const renderElement = useCallback(props => {
+        switch (props.element.type) {
+            case 'code':
+                return <CodeElement {...props} />
+            default:
+                return <DefaultElement {...props} />
+        }
+    }, [])
+
+    const renderLeaf = useCallback(props => {
+        return <Leaf {...props} />
+    }, [])
+
+    // render the journal
+    return (
+        <div>
+            <FolderTree
+              data={treeState}
+              showCheckbox={false}
+              initOpenStatus='custom'
+              onNameClick={() => console.log("you just clicked a file")}
+            />
+            <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+                <div id="editorToolbar">
+                    <button
+                        onMouseDown={event => {
+                            event.preventDefault()
+                            CustomEditor.toggleBoldMark(editor)
+                        }}
+                    >
+                        Bold
+                    </button>
+                    <button
+                        onMouseDown={event => {
+                            event.preventDefault()
+                            CustomEditor.toggleItalicMark(editor)
+                        }}
+                    >
+                        Italics
+                    </button>
+                    <button
+                        onMouseDown={event => {
+                            event.preventDefault()
+                            CustomEditor.toggleUnderlineMark(editor)
+                        }}
+                    >
+                        Underline
+                    </button>
+                    <button
+                        onMouseDown={event => {
+                            event.preventDefault()
+                            CustomEditor.toggleCodeBlock(editor)
+                        }}
+                    >
+                        Code Block
+                    </button>
+                </div>
+                <Editable
+                    // pass in renderElement
+                    renderElement={renderElement}
+                    renderLeaf={renderLeaf}
+                    onKeyDown={event => {
+                        if (!event.ctrlKey) {
+                            return
+                        }
+
+                        switch (event.key) {
+                            case 'q': {
+                                console.log("pressed `")
+                                event.preventDefault()
+                                CustomEditor.toggleCodeBlock(editor)
+                                break
+                            }
+
+                            case 'b': {
+                                event.preventDefault()
+                                CustomEditor.toggleBoldMark(editor)
+                                break
+                            }
+
+                            case 'i': {
+                                event.preventDefault()
+                                CustomEditor.toggleItalicMark(editor)
+                                break
+                            }
+
+                            case 'u': {
+                                event.preventDefault()
+                                CustomEditor.toggleUnderlineMark(editor)
+                                break
+                            }
+
+                            default:
+                                break
+                        }
+                    }}
+                />
+            </Slate>
+        </div>
+    );
 }
 
 // TODO:

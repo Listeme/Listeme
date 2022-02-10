@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import Set from './components/Set'
-import { SettingContext } from './context/SettingContext';
-import Button from './components/Button';
-import Sound from './components/Sound';
-import CountdownAnimation from './components/CountdownAnimation';
+import Set from '../components/Set'
+import { SettingContext } from '../context/SettingContext';
+import Button from '../components/Button';
+import Sound from '../components/Sound';
+import CountdownAnimation from '../components/CountdownAnimation';
 
 
 function Timer() {

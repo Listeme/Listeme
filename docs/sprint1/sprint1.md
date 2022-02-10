@@ -115,9 +115,9 @@ The Sprint 1 planning meeting was held on January 30, 2022 on Discord. The purpo
 </table>
 
 
-User Story:
+# User Story:
 
-DEV - 001 (Rahul, David)
+## DEV - 001 (Rahul, David)
 
 As Frank, Joe, and Mimi, I can create a new account so I can join Listeme and use the application.
 
@@ -129,7 +129,9 @@ Task 3: Create forgot password form
 
 Task 4: Create a registration and login api on the backend
 
-DEV - 002 (Jack)
+---
+
+## DEV - 002 (Jack)
 
 As Mimi, I should be able to set a timer for the Pomodoro section so I get to set myself the time limit to do it
 
@@ -137,7 +139,9 @@ Task 1: Should be able to adjust time
 
 Task 2: Timer should make some sort of sound when it runs out
 
-DEV - 003 (Joy)
+---
+
+## DEV - 003 (Joy)
 
 As Mimi, I can change tabs by clicking Pomodoro, calendar, task, or feed so it is easy to check what I want.
 
@@ -151,7 +155,9 @@ Task 4: Create task button
 
 Task 5: Add basic login and logout button
 
-DEV - 004 (Yuvraaj)
+---
+
+## DEV - 004 (Yuvraaj)
 
 As Joe, I can take a journal of the day so I get to check back later.
 
@@ -161,7 +167,9 @@ Task 2: move journals to sub folders
 
 Task 3: create ui for creating journal entries
 
-DEV - 005 (Peter)
+---
+
+## DEV - 005 (Peter)
 
 As Frank, I should be able to add and remove tasks and schedule tasks from the to-do list. These items should then appear on pomodoro.
 
@@ -175,7 +183,9 @@ Task 4: Able to schedule tasks
 
 Task 5: Make the list look nice
 
-DEV - 006 (Daksh)
+---
+
+## DEV - 006 (Daksh)
 
 Create Database & Schema
 
@@ -187,7 +197,9 @@ Task 3: Create Schema for Pomodoro
 
 Task 4: Create Schema for Tasks
 
-**Meeting Participants:**
+---
+
+# Meeting Participants
 
 Rahul Uppalapati 
 

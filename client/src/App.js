@@ -13,7 +13,6 @@ function App() {
   useEffect(() => updateExecute(executing), [executing, startAnimate, updateExecute])
   return (
     <div className="container">
-      <h1>Pomodoro</h1>
       {pomodoro !== 0 ?
         <Set /> :
         <>

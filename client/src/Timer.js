@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import SetPomodoro from './components/SetPomodoro'
+import Set from './components/Set'
 import { SettingContext } from './context/SettingContext';
 import Button from './components/Button';
 import CountdownAnimation from './components/CountdownAnimation';
@@ -46,7 +46,7 @@ function Timer() {
           <Button title="Start" activeClass={!startAnimate ? 'active' : undefined} _callback={startTimer} />
           <Button title="Pause" activeClass={startAnimate ? 'active' : undefined} _callback={pauseTimer} />
         </div>
-      </> : <SetPomodoro />}
+      </> : <Set />}
     </div>
     
   );

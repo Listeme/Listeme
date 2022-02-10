@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { SettingContext } from '../context/SettingContext';
 
-const SetPomodoro = () => {
+const Set = () => {
     const {updateExecute} = useContext(SettingContext)
     const [newTimer, setNewTimer] = useState({
         work: 20,
@@ -50,4 +50,4 @@ const SetPomodoro = () => {
     )
 };
 
-export default SetPomodoro
+export default Set

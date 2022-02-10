@@ -5,8 +5,8 @@ import Button from './Button'
 const Set = () => {
     const {updateExecute} = useContext(SettingContext)
     const [newTimer, setNewTimer] = useState({
-        work: 0.3,
-        break: 0.2,
+        work: 20,
+        break: 10,
         active: 'work'
     })
 

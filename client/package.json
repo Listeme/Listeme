@@ -24,10 +24,10 @@
     "web-vitals": "^2.1.4",
     "slate": "^0.72.8",
     "slate-react": "^0.72.8",
-    "react-folder-tree": "^5.0.3"
+    "react-folder-tree": "^5.0.3",
     "resolve-url-loader": "^5.0.0",
     "sound": "^2.7.0",
-    "use-sound": "^4.0.1",
+    "use-sound": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import { React, useContext, useEffect } from 'react';
 import Set from './Set'
 import { SettingContext } from '../context/SettingContext';
 import Button from './Button';

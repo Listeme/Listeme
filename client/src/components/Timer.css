@@ -46,6 +46,7 @@
 	background: #151932;
 	font-size: 3.5rem;
 	box-shadow: 1rem 1.5rem 2rem rgba(182, 88, 88, 0.6);
+	border-radius: 50px;
 }
 
 .button-wrapper {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Spacer, Button} from "@chakra-ui/react";
+import { Flex, Box, Spacer, Button, useColorModeValue} from "@chakra-ui/react";
 
 export default function LandingPage(props) {
 	const cs = {background: "#555b6e",
@@ -17,12 +17,13 @@ export default function LandingPage(props) {
 	const hov = {bg: "#333131"};
 	const flex_css = {
 		display: "flex",
-		flexFlow: "row wrap",
+		flexFlow: "row",
 		justifyContent: "flex-start",
 	};
-	return (		
-			<Flex css={flex_css}
-			>
+	const bg = useColorModeValue('red.300', 'orange.200');
+	return (
+		<Box h="100vh" w="full" bg={bg}>		
+			<Flex css={flex_css}>
 				<Spacer />
 				<Box>
 					<Button css={cs} onClick={signup_handler} _hover = {hov}>
@@ -30,7 +31,8 @@ export default function LandingPage(props) {
 					</Button>
 					<Button css={cs} onClick={login_handler} _hover = {hov}>Log in</Button>
 				</Box>
-			</Flex>
+			</Flex>	
+		</Box>		
 	);
 }
 

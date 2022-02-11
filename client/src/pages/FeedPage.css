@@ -11,6 +11,9 @@
 .FeedPage {
   text-align: center;
   background-color: azure;
+  height: 100vh;
+  width: full;
+  
  
 }
 
@@ -27,7 +30,6 @@
 }
 
 .reorg{
-
   margin-top:10em;
   height:10em;
   margin-right: 7em;

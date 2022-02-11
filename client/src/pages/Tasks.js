@@ -9,100 +9,102 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-  function createData(name, due, notes) {
-    return { name, due, notes };
-  }
-  
-  const rows = [
-    createData('Finish Listeme', 'February 8th', 'None'),
-    createData('Eat Spaghetti', 'February 9th', 'Spaghetti Arts'),
-    createData('Become Epic', 'None', 'CSC301 Lec 3'),
-  ];
+function createData(name, due, notes) {
+  return { name, due, notes };
+}
 
-  class TaskName extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    render() {
-      return (
-        <TextField
-          id="task_name"
-          label="Add Task"
-          defaultValue=""
-          variant="standard" />
-      );
-    }
+const rows = [
+  createData('Finish Listeme', 'February 8th', 'None'),
+  createData('Eat Spaghetti', 'February 9th', 'Spaghetti Arts'),
+  createData('Become Epic', 'None', 'CSC301 Lec 3'),
+];
+
+class TextInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  class DueDate extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    render() {
-      return (
-        <TextField
-          id="due_date"
-          label="Due Date"
-          defaultValue=""
-          variant="standard" />
-      );
-    }
+  handleChange(e) {
+    this.props.handleChange(e.target.value);
   }
 
-  class Notes extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    render() {
-      return (
-        <TextField
-          id="notes"
-          label="Notes"
-          defaultValue=""
-          variant="standard" />
-      );
-    }
+  render() {
+    const id = this.props.id;
+    const label = this.props.label;
+    return (
+      <TextField
+        id={id}
+        label={label}
+        defaultValue=""
+        variant="standard"
+        onChange={this.handleChange} />
+    );
+  }
+}
+
+class AddTask extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: '', date: '', notes: 'None' };
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleNotesChange = this.handleNotesChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  function AddTask(props) {
+  handleNameChange(name) {
+    this.setState({ name, date: this.state.date, notes: this.state.notes });
+  }
+
+  handleDateChange(date) {
+    this.setState({ name: this.state.name, date, notes: this.state.notes });
+  }
+
+  handleNotesChange(notes) {
+    this.setState({ name: this.state.name, date: this.state.date, notes });
+  }
+
+  handleClick() {
+    this.props.onClick(this.state.name, this.state.date, this.state.notes);
+  }
+
+  render() {
     return (
       <TableRow>
-        <TableCell component="th" scope="row"> <TaskName />
+        <TableCell component="th" scope="row">
+          <Button variant="text" onClick={() => {
+            this.handleClick();
+          }}>Add Task</Button>
+          <TextInput id="task_name" label="Add Task" handleChange={this.handleNameChange} />
         </TableCell>
-        <TableCell align="right"> <DueDate />
+        <TableCell align="right"> <TextInput id="due_date" label="Due Date" handleChange={this.handleDateChange} />
         </TableCell>
-        <TableCell align="right"> <Notes />
+        <TableCell align="right"> <TextInput id="notes" label="Notes" handleChange={this.handleNotesChange} />
         </TableCell>
       </TableRow>
     );
   }
-  
-  function Tasklist(props) {
+}
+
+class TaskList extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {tasks: rows};
+    this.updateTasks = this.updateTasks.bind(this);
+  }
+
+  updateTasks(name, due, notes) {
+    this.setState({tasks: this.state.tasks.concat(createData(name, due, notes))});
+  }
+
+  render() {
+    const tasks = this.state.tasks;
+    const update = this.updateTasks;
+
     return (
       <div className='Tasks-header'>
         <div className='Tasks-spacer'>
@@ -118,7 +120,7 @@ import TextField from '@mui/material/TextField';
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {tasks.map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -128,7 +130,7 @@ import TextField from '@mui/material/TextField';
                   <TableCell align="right">{row.notes}</TableCell>
                 </TableRow>
               ))}
-              <AddTask />
+              <AddTask onClick={update}/>
             </TableBody>
           </Table>
         </TableContainer>
@@ -136,9 +138,10 @@ import TextField from '@mui/material/TextField';
 
     );
   }
+}
 
-  export default function Tasks() {
-    return (
-      <Tasklist />
-    );
-  }
+export default function Tasks() {
+  return (
+    <TaskList />
+  );
+}

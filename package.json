@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@mui/icons-material": "^5.4.1",
+    "@mui/lab": "^5.0.0-alpha.68",
+    "date-fns": "^2.28.0",
+    "dayjs": "^1.10.7"
+  }
+}

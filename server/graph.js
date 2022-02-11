@@ -3,35 +3,44 @@ const { ApolloServer, gql } = require("apollo-server");
 const neo4j = require("neo4j-driver");
 
 const typeDefs = gql`
-    type Movie {
-        title: String
-        actors: [Actor] @relationship(type: "ACTED_IN", direction: IN)
-    }
-
-    type Actor {
-        name: String
-        movies: [Movie] @relationship(type: "ACTED_IN", direction: OUT)
-    }
-    
     type User {
         email: String!
         password: String!
+        jwt: String
     }
     
     type Task {
         id: ID!
         name: String!
-        notes: [Note] @relation(name: "HAS_NOTE", direction: "OUT")
+        notes: [NotesFolder!]! @relationship(type: "HAS_NOTE", direction: OUT)
         completed: Boolean!
-        dueDate: Time
-        user: User! @relation(name: "HAS_TASK")
+        startDate: String!
+        endDate: String!
+        subtasks: [Task!]! @relationship(type: "HAS_SUBTASK", direction: OUT)
+        user: User! @relationship(type: "OWNED_BY", direction: IN)
     }
         
+    type NotesFolder {
+        id: ID!
+        name: String!
+        notes: [Note!]! @relationship(type: "HAS_NOTE", direction: OUT)
+        subfolders: [NotesFolder!]! @relationship(type: "HAS_SUBFOLDER", direction: OUT)
+        user: User! @relationship(type: "OWNED_BY", direction: IN)
+    }
+    
     type Note {
         id: ID!
-        user: User! @relation(name: "HAS_NOTE")
         title: String!
         content: String!
+        user: User! @relationship(type: "OWNED_BY", direction: IN)
+    }
+    
+    type Pomodoro {
+        id: ID!
+        startTime: String!
+        endTime: String!
+        task: [Task!]! @relationship(type: "HAS_POMODORO", direction: OUT)
+        user: User! @relationship(type: "OWNED_BY", direction: IN)
     }
 `;
 

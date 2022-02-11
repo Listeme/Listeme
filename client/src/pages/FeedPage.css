@@ -7,14 +7,12 @@
   max-height: 700px;
 
 }
-  
+
 .FeedPage {
   text-align: center;
   background-color: azure;
   height: 100vh;
-  width: full;
-  
- 
+  width: 100vw;
 }
 
 .e-calendar {

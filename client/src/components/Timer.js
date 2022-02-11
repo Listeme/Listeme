@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import Set from '../components/Set'
+import Set from './Set'
 import { SettingContext } from '../context/SettingContext';
-import Button from '../components/Button';
-import Sound from '../components/Sound';
-import CountdownAnimation from '../components/CountdownAnimation';
+import Button from './Button';
+// import Sound from './Sound';
+import CountdownAnimation from './CountdownAnimation';
+import './Timer.css';
 
 
 function Timer() {
@@ -53,4 +54,4 @@ function Timer() {
   );
 }
 
-export default Timer
+export default Timer;

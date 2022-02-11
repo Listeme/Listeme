@@ -12,7 +12,6 @@ ReactDOM.render(
     <SettingContextProvider>
       <App />
     </SettingContextProvider>
-
   </React.StrictMode>,
   document.getElementById('root')
 );

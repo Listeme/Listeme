@@ -1,8 +1,12 @@
 const { Neo4jGraphQL } = require("@neo4j/graphql");
 const { Neo4jGraphQLAuthJWTPlugin } = require("@neo4j/graphql-plugin-auth");
+const { OGM } = require("@neo4j/graphql-ogm");
+
+const jose = require('jose')
 
 const { ApolloServer, gql } = require("apollo-server");
 const neo4j = require("neo4j-driver");
+
 require("dotenv").config({path: "./config.env"});
 
 const neo_url = process.env.NEO_URL;
@@ -22,6 +26,15 @@ const typeDefs = gql`
         updatedAt: DateTime! @timestamp(operations: [UPDATE])
     }
     
+    extend type User @auth(
+        rules: [
+            {
+                operations: [UPDATE],
+                bind: { id: "$jwt.sub" }
+            }
+        ]
+    )
+
     type Task {
         id: ID! @id
         name: String!
@@ -34,7 +47,7 @@ const typeDefs = gql`
         createdAt: DateTime! @timestamp(operations: [CREATE])
         updatedAt: DateTime! @timestamp(operations: [UPDATE])
     }
-        
+
     type NotesFolder {
         id: ID! @id
         name: String!
@@ -44,7 +57,7 @@ const typeDefs = gql`
         createdAt: DateTime! @timestamp(operations: [CREATE])
         updatedAt: DateTime! @timestamp(operations: [UPDATE])
     }
-    
+
     type Note {
         id: ID! @id
         title: String!
@@ -53,7 +66,7 @@ const typeDefs = gql`
         createdAt: DateTime! @timestamp(operations: [CREATE])
         updatedAt: DateTime! @timestamp(operations: [UPDATE])
     }
-    
+
     type Pomodoro {
         id: ID! @id
         startTime: String!
@@ -63,12 +76,46 @@ const typeDefs = gql`
         createdAt: DateTime! @timestamp(operations: [CREATE])
         updatedAt: DateTime! @timestamp(operations: [UPDATE])
     }
+    
+    type Mutation {
+        createUser(email: String!, password: String!): User!
+        signIn(email: String!, password: String!): String!
+    }
 `;
 
 const driver = neo4j.driver(
     neo_url,
     neo4j.auth.basic(neo_user, neo_pass)
 );
+
+const ogm = new OGM({ typeDefs, driver });
+
+const User = ogm.model("User");
+
+// async function signIn(args) {
+//     let existingUser = User.find(args);
+//     let jwt = await createJWT(existingUser);
+//     return jwt;
+// }
+
+async function signIn({ email, password }) {
+    const user = await User.find({ where: { email }});
+
+    if (!user) {
+        throw new Error(`User with username ${email} does not exist`);
+    }
+
+    const { users } = await User.create({
+        input: [
+            {
+                email,
+                password,
+            }
+        ]
+    });
+
+    return createJWT({ sub: users.id });
+},
 
 const neoSchema = new Neo4jGraphQL({
     typeDefs,
@@ -77,6 +124,11 @@ const neoSchema = new Neo4jGraphQL({
         auth: new Neo4jGraphQLAuthJWTPlugin({
             secret: secret
         })
+    },
+    resolvers: {
+        Mutation: {
+            signIn
+        }
     }
 });
 

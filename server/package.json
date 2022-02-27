@@ -9,13 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@neo4j/graphql": "^3.0.0",
+    "@neo4j/graphql-plugin-auth": "^1.0.0",
+    "graphql": "^16.0.0",
+    "neo4j-driver": "^4.4.2",
+    "apollo-server": "^3.6.3",
     "cors": "^2.8.5",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
-    "mongodb": "^4.3.1",
-    "@neo4j/graphql":"^2.5.8",
-    "graphql":"^15.0.0",
-    "neo4j-driver":"^4.4.2",
-    "apollo-server": "^3.6.3"
+    "mongodb": "^4.3.1"
   }
 }

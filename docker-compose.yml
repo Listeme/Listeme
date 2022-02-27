@@ -1,0 +1,41 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - neo4j
+    environment:
+      - NEO_URL=bolt://neo4j:7687/
+      - NEO_USER=neo4j
+      - NEO_PASS=kitten
+      - SERVER_PORT=4000
+      - SECRET=some-secret-key
+
+
+  neo4j:
+    image: neo4j:latest
+    environment:
+      - NEO4J_AUTH=neo4j/kitten
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4JLABS_PLUGINS=["apoc"]
+    ports:
+      - '7687:7687'
+    volumes:
+      - ./neo4j-data:/neo4j
+
+volumes:
+  neo4j-data:

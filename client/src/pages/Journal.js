@@ -3,6 +3,7 @@ import { createEditor, Editor, Transforms, Text } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 import { useCallback, useMemo, useState } from 'react';
 import FolderTree from 'react-folder-tree';
+import { Flex, Button, ButtonGroup } from '@chakra-ui/react';
 
 // define our own custom helpers
 const CustomEditor = {
@@ -149,49 +150,55 @@ function Journal() {
 
     // render the journal
     return (
-        <div>
+        <Flex flexDirection="row">
             <FolderTree
+              id="folderTree"
               data={treeState}
               showCheckbox={false}
               initOpenStatus='custom'
-              onNameClick={() => console.log("you just clicked a file")}
             />
-            <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-                <div id="editorToolbar">
-                    <button
+            <Slate editor={editor} value={value} onChange={value => setValue(value)} id="slateEditor">
+                <Flex flexDirection="column" margin="10px" minWidth="300px">
+                <ButtonGroup variant="outline" spacing="3">
+                    <Button
+                        size="sm"
                         onMouseDown={event => {
                             event.preventDefault()
                             CustomEditor.toggleBoldMark(editor)
                         }}
                     >
                         Bold
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                        size="sm"
                         onMouseDown={event => {
                             event.preventDefault()
                             CustomEditor.toggleItalicMark(editor)
                         }}
                     >
                         Italics
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                        size="sm"
                         onMouseDown={event => {
                             event.preventDefault()
                             CustomEditor.toggleUnderlineMark(editor)
                         }}
                     >
                         Underline
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                        size="sm"
                         onMouseDown={event => {
                             event.preventDefault()
                             CustomEditor.toggleCodeBlock(editor)
                         }}
                     >
                         Code Block
-                    </button>
-                </div>
+                    </Button>
+                </ButtonGroup>
                 <Editable
+                    id="slateEditorField"
                     // pass in renderElement
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}
@@ -231,15 +238,13 @@ function Journal() {
                         }
                     }}
                 />
+                </Flex>
             </Slate>
-        </div>
+        </Flex>
     );
 }
 
 // TODO:
-// 1. add more elements than a plaintext editable area
-// 2. use some basic css to arrange them on screen
-// 3. add more features to the editor (markdown support, codeblocks, font changing, etc)
-// 4. check out the "saving to a database" section of slate documentation to figure out saving
+// add multiple note functionality once db is connected
 
 export default Journal;

@@ -15,12 +15,14 @@ import Tasks from "./pages/Tasks";
 
 function App() {
   return (
+    <ChakraProvider theme={font_theme}>
+      <ToggleColorMode/>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ChakraProvider theme={font_theme}> <ToggleColorMode/>  <LandingPage /> </ChakraProvider>} />
-          <Route path="/login" element={<ChakraProvider theme={font_theme}> <ToggleColorMode/>  <LoginPage /> </ChakraProvider>} />
-          <Route path="/signup" element={<ChakraProvider theme={font_theme}> <ToggleColorMode/>  <SignupPage /> </ChakraProvider>} />
-          <Route path="/forgotpassword" element={<ChakraProvider theme={font_theme}> <ToggleColorMode/>  <ForgotPasswordPage/> </ChakraProvider>} />
+        <Routes>        
+          <Route path="/" element={   <LandingPage /> } />
+          <Route path="/login" element={<LoginPage /> } />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/forgotpassword" element={<ForgotPasswordPage/>} />
           <Route path="/timer" element={<TimerPage/>} />
           <Route path="/journal" element={<Journal/>} />
           <Route path="/feed" element={<FeedPage/>} />
@@ -30,6 +32,8 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+    </ChakraProvider>
+      
   );
 }
 

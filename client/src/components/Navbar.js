@@ -139,7 +139,7 @@ export default function Navbar() {
     </VStack>
   );
   return (
-      <chakra.div h="4.5rem" mx="auto" maxW="1200px">
+      <chakra.div h="4.5rem" mx="auto" >
         <Flex
           w="full"
           h="full"
@@ -152,7 +152,7 @@ export default function Navbar() {
               <HStack>
                 <Box>
 					<chakra.p>
-						<chakra.h1 fontSize="md" color= "white" _hover={{color: cl}}>
+						<chakra.h1 fontSize="md">
 							Listeme
 						</chakra.h1>
 					</chakra.p>

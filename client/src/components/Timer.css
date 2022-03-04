@@ -1,0 +1,92 @@
+.container {
+	color: #000003;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: rgb(0, 0, 0);
+	background: #CBD5DF;
+}
+
+.container h1 {
+	font-size: 2.6rem;
+	margin-bottom: 0.2rem;
+}
+
+.container .labels {
+	list-style: none;
+	display: flex;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	padding: 0.3rem 0.3rem;
+	background-color: #E2E8F0;
+	border-radius: 1.5rem;
+}
+
+.active-label {
+	color: #2D3848;
+	background-color: #F7FAFB;
+}
+
+.timer-container {
+	display: flex;
+	flex: 2;
+	align-items: top;
+	justify-content: top;
+}
+
+.time-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 10rem;
+	width: 20rem;
+	color: #2D3848;
+	background: #F7FAFB;
+	font-size: 3.5rem;
+	border-radius: 50px;
+}
+
+.button-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+}
+
+button {
+	color: #FEFEFE;
+	font-size: 0.8rem;
+	padding: 0.5rem 1.2rem;
+	border: none;
+	border-radius: 3rem;
+	margin: 0.2rem;
+	background: #1A202C;
+	min-width: 80px;
+	cursor: pointer;
+}
+
+.button-wrapper button.activve {
+	color: #0c0e1b;
+	background-color: #CBD5DF;
+	border: 1px solid #283cbe;
+}
+.form-container {
+	text-align: center;
+}
+.input-wrapper {
+	margin: 1.5rem;
+}
+.input-wrapper input {
+	height: 30px;
+	width: 30px;
+	padding: 2rem;
+	background-color: #1A202C;
+	color: #FEFEFE;
+	border: none;
+	border-radius: 50%;
+	margin-right: 0.3rem;
+	text-align: center;
+	font-size: 14pt;
+}

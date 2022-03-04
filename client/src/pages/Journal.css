@@ -1,0 +1,9 @@
+#slateEditorField {
+    background-color: antiquewhite;
+    color: black;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height: 100px;
+    border-radius: 10px;
+}

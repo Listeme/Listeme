@@ -5,12 +5,13 @@ import { nanoid } from 'nanoid';
 
 function AddTask({ addTask }) {
 const toast = useToast()
-const [value, setValue] = useState("")
+const [text, setText] = useState("")
+const [date, setDate] = useState("")
 
 function handleSubmit(e){
     e.preventDefault();
 
-if(value === ''){
+if(text === ''){
     toast({
         title: "Your task needs a name.",
         status: "warning",
@@ -21,32 +22,34 @@ if(value === ''){
     }
 const task = {
     id: nanoid(),
-    text: value,
-    date: value
+    text: text,
+    date: date
 }
 
 addTask(task)
-setValue('')
+setText('')
+setDate('')
 
 }
     return (
         <form onSubmit={handleSubmit}>
         <Stack spacing={5}>
+
             <Input
             mt={5} 
-            value={value} 
+            value={text} 
             variant="outline" 
             type="text" 
             placeholder="Enter Task"
-            onChange={(e)=>setValue(e.target.value)} />
+            onChange={(e)=>setText(e.target.value)} />
             
             <Input
             mt={5} 
-            value={value} 
+            value={date} 
             variant="outline" 
             type="text" 
             placeholder="Due Date"
-            onChange={(e)=>setValue(e.target.value)} />
+            onChange={(e)=>setDate(e.target.value)} />
 
             <Button colorScheme="teal" type="submit">Add Task</Button>
         </Stack>

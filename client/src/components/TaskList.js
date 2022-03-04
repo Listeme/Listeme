@@ -4,7 +4,7 @@ import { HStack, VStack,Text, Flex, Badge,Modal,
     ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton, Button, Input, Divider } from '@chakra-ui/react'
+    ModalCloseButton, Button, Input } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon} from '@chakra-ui/icons'
 import React,{useState} from 'react'
 

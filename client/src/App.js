@@ -18,7 +18,7 @@ function App() {
     <ChakraProvider theme={font_theme}>
       <ToggleColorMode/>
       <BrowserRouter>
-        <Routes>        
+        <Routes>
           <Route path="/" element={   <LandingPage /> } />
           <Route path="/login" element={<LoginPage /> } />
           <Route path="/signup" element={<SignupPage />} />
@@ -26,14 +26,14 @@ function App() {
           <Route path="/timer" element={<TimerPage/>} />
           <Route path="/journal" element={<Journal/>} />
           <Route path="/feed" element={<FeedPage/>} />
-          <Route path="/task" element={<ChakraProvider theme={font_theme}> <ToggleColorMode/>  <TaskList/> </ChakraProvider>} />
+          <Route path="/task" element={<TaskList/>} />
           <Route path="*"
           element={<Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
-      
+
   );
 }
 

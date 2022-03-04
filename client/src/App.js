@@ -10,7 +10,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import ToggleColorMode from './components/ColorMode';
 import font_theme from './font_theme';
-import Tasks from "./pages/Tasks";
+import TaskList from "./pages/Tasks";
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
           <Route path="/timer" element={<TimerPage/>} />
           <Route path="/journal" element={<Journal/>} />
           <Route path="/feed" element={<FeedPage/>} />
-          <Route path="/task" element={<Tasks/>} />
+          <Route path="/task" element={<ChakraProvider theme={font_theme}> <ToggleColorMode/>  <TaskList/> </ChakraProvider>} />
           <Route path="*"
           element={<Navigate to="/" />}
           />

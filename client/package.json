@@ -32,7 +32,8 @@
     "react-calendar": "^3.7.0",
     "styled-components": "^5.3.3",
     "slate": "^0.72.8",
-    "slate-react": "^0.72.8"
+    "slate-react": "^0.72.8",
+    "@apollo/client": "3.5.10"
   },
   "scripts": {
     "start": "react-scripts start",

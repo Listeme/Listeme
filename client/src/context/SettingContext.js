@@ -1,4 +1,8 @@
 import React, { createContext, useState } from 'react';
+import useSound from 'use-sound';
+import alarm from "../components/alarm-clock-01.mp3";
+import clock from "../components/clock-ticking-1.mp3";
+import clicksound from "../components/clicksound.mp3";
 
 export const SettingContext = createContext()
 function SettingContextProvider(props) {
@@ -6,19 +10,37 @@ function SettingContextProvider(props) {
     const [pomodoro, setPomodoro] = useState(0)
     const [executing, setExecuting] = useState({})
     const [startAnimate, setStartAnimate] = useState(false)
+    const [play] = useSound(clicksound, {
+        sprite: {in: [200, 500]},
+        volume: 0.3});
+    const [tick] = useSound(clock, {
+        sprite: {in: [200, 500]},
+        volume: 0.3,});
+    const [loud] = useSound(alarm, {
+        sprite: {in: [0, 500]},
+        volume: 0.3,});
 
     
     function startTimer(){
+        play({id: executing.active === 'start' ? "in" : "in"}); 
+        tick({id: executing.active === 'start' ? "in": "in"}); 
         setStartAnimate(true)
     }
     function pauseTimer(){
+        play({id: executing.active === 'pause' ? "in" : "in"}); 
         setStartAnimate(false)
     }
     function stopTimer(){
+        loud({id: executing.active === 'start' ? "in" : "in"});
         setStartAnimate(false)
     }
 
+    function ticking(){
+        tick({id: executing.active === 'start' ? "in" : "in"});
+    }
+
     const SettingBtn = () => {
+        play({id: executing.active === 'setting' ? "in" : "in"}); 
         setExecuting({})
         setPomodoro(0)
     }
@@ -77,7 +99,8 @@ function SettingContextProvider(props) {
         SettingBtn,
         setCurrentTimer,
         children,
-        stopAnimate
+        stopAnimate,
+        ticking
         }}>
         {props.children}
     </SettingContext.Provider>

@@ -1,33 +1,44 @@
-import React from "react";
+import {React} from "react";
 import {
-  Box,
-  Heading,
   Flex,
+  VStack,
+  Stack,
+  Text,
+  useBreakpointValue,
   useColorModeValue,
-  chakra
 } from "@chakra-ui/react";
-import Card from "../Card";
 
 
 function About() {
-    const bg = useColorModeValue('gray.600', 'gray.500');
-    return (
-        <chakra.div mx="auto">
-        <Box w="full" px="200px" py="60px" mb="120px" bg={bg}>
-          <Flex justifyContent="space-between" alignItems="center" pb="80px">
-            <Heading fontSize={54} letterSpacing="6px" textAlign="center">
-              All in one <br /> PRODUCTIVITY APP
-            </Heading>
-            <Box maxW="300px">
-                <Card title="Listeme" pb="20px">
-                Listeme is an all-in-one productivity app. The app features various synchronizations across multiple features. 
-                Rather than having to navigate the G suite or Microsoft Office for all your needs, this app eliminates the option 
-                of the navigation by giving users all the features in one place.
-                </Card>
-            </Box>
-          </Flex>
-        </Box>
-        </chakra.div>
+  const bgIMG = useColorModeValue(
+    'url(https://images.unsplash.com/photo-15x64510714747-69c3bc1fab41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)',
+    'url(https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3087&q=80)'
+    );
+  return (
+        <Flex
+      w={'full'}
+      h={'100vh'}
+      backgroundImage={bgIMG}
+      backgroundSize={'cover'}
+      backgroundPosition={'center center'}
+      >
+      <VStack
+        w={'full'}
+        justify={'center'}
+        px={useBreakpointValue({ base: 4, md: 8 })}
+        bgGradient={'linear(to-r, blackAlpha.600, transparent)'}>
+        <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
+          <Text
+            color={'white'}
+            fontWeight={700}
+            lineHeight={1.2}
+            textAlign={'center'}
+            fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
+            All in one <br /> PRODUCTIVITY APP
+          </Text>
+        </Stack>
+      </VStack>
+    </Flex>
       );
 }
 

@@ -11,7 +11,7 @@ import {
 
 function About() {
   const bgIMG = useColorModeValue(
-    'url(https://images.unsplash.com/photo-15x64510714747-69c3bc1fab41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)',
+    'url(https://images.unsplash.com/photo-1564510714747-69c3bc1fab41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHByb2R1Y3Rpdml0eXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=3087&q=80)',
     'url(https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3087&q=80)'
     );
   return (
@@ -21,6 +21,7 @@ function About() {
       backgroundImage={bgIMG}
       backgroundSize={'cover'}
       backgroundPosition={'center center'}
+      id="about"
       >
       <VStack
         w={'full'}

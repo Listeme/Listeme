@@ -20,6 +20,15 @@ if(text === ''){
       })
       return;
     }
+if(date === ''){
+    toast({
+        title: "Select a due date.",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+      })
+      return;
+    }
 const task = {
     id: nanoid(),
     text: text,

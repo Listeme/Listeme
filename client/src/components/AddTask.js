@@ -47,7 +47,7 @@ setDate('')
             mt={5} 
             value={date} 
             variant="outline" 
-            type="text" 
+            type="date" 
             placeholder="Due Date"
             onChange={(e)=>setDate(e.target.value)} />
 

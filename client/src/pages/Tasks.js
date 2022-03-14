@@ -7,9 +7,9 @@ import TaskList from "../components/TaskList";
 function Tasks() {
  
   const tasksList = [
-    { id: 1, text: 'Finish Listeme', date: '2022-04-08'},
-    { id: 2, text: 'CSC301 A2', date: '2022-04-04'},
-    { id: 3, text: 'Be Awesome', date: '2022-12-25'}
+    { id: 1, text: 'Finish Listeme', date: '2022-04-08', done: false},
+    { id: 2, text: 'CSC301 A2', date: '2022-04-04', done: false},
+    { id: 3, text: 'Be Awesome', date: '2022-12-25', done: true}
   ];
   
   const [tasks, setTasks] = useState(tasksList);

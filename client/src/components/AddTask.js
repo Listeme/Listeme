@@ -32,7 +32,8 @@ if(date === ''){
 const task = {
     id: nanoid(),
     text: text,
-    date: date
+    date: date,
+    done: false
 }
 
 addTask(task)

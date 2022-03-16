@@ -12,6 +12,7 @@ import {
   VStack,
   HStack,
   IconButton,
+  Image,
 } from "@chakra-ui/react";
 import {Link as ScrollLink} from 'react-scroll';
 
@@ -50,6 +51,12 @@ export default function Navbar() {
         </Button>
       </ScrollLink>
 
+      <ScrollLink to="features" smooth={true} duration={500}>
+        <Button w="full" variant="ghost">
+          Features
+        </Button>
+      </ScrollLink>
+
       <Button w="full" variant="ghost" onClick={login_handler}>
         Sign In
       </Button>
@@ -79,24 +86,16 @@ export default function Navbar() {
         <Flex align="flex-start">
           <ScrollLink active="active" to="home" smooth={true} duration={500}>
             <HStack>
-              <Box>
-              <Button
-              bg={bg}
-              color="gray.500"
-              display="inline-flex"
-              alignItems="center"
-              fontSize="md"
-              _hover={{ color: cl }}
-              _focus={{ boxShadow: "none" }}
-              textColor={text}
-            >
-              Listeme
-              </Button>
-              </Box>
+            <Box>
+                <Image
+                src="https://cdn.discordapp.com/icons/931373253656707113/4a35783fbff7c0772d31719b220c9802.webp?size=96"
+                borderRadius='full'
+                boxSize='50px'/>
+            </Box>
             </HStack>
           </ScrollLink>
         </Flex>
-        <Flex >
+        <Flex>
           <HStack spacing="3" display={{ base: "none", md: "inline-flex" }}>
             <ScrollLink active="active" to="about" smooth={true} duration={500}>
             <Button
@@ -170,7 +169,6 @@ export default function Navbar() {
             onClick={mobileNav.onOpen}
           />
         </Flex>
-          
       </Flex>
       {MobileNavContent}
     </chakra.div>

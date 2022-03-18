@@ -11,6 +11,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import ToggleColorMode from './components/ColorMode';
 import font_theme from './font_theme';
 import TaskList from "./pages/Tasks";
+import MakeCalendar from "./pages/Calendar"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/journal" element={<Journal/>} />
           <Route path="/feed" element={<FeedPage/>} />
           <Route path="/task" element={<TaskList/>} />
+          <Route path="/calendar" element={<MakeCalendar/>} />
           <Route path="*"
           element={<Navigate to="/" />}
           />

@@ -17,7 +17,7 @@ const neo_pass = process.env.NEO_PASS;
 const server_port = process.env.SERVER_PORT;
 const secret = process.env.SECRET;
 
-const typeDefs = `
+const typeDefs = gql`
     type User
         @exclude(operations: [CREATE, UPDATE, DELETE])
         @auth (
@@ -42,7 +42,8 @@ const typeDefs = `
             rules: [
                 {
                     operations: [CREATE, UPDATE, DELETE, CONNECT, DISCONNECT],
-                    bind: { user: { id: "$jwt.sub", jwtid: "$jwt.jti"}}
+                    bind: { user: { id: "$jwt.sub" }},
+                    bind: { user: { jwtid: "$jwt.jti" }}
                 },
                 {
                     operations: [READ],
@@ -67,7 +68,8 @@ const typeDefs = `
             rules: [
                 {
                     operations: [CREATE, UPDATE, DELETE, CONNECT, DISCONNECT],
-                    bind: { user: { id: "$jwt.sub", jwtid: "$jwt.jti"}}
+                    bind: { user: { id: "$jwt.sub" }},
+                    bind: { user: { jwtid: "$jwt.jti" }}
                 },
                 {
                     operations: [READ],
@@ -88,14 +90,16 @@ const typeDefs = `
         @auth (
             rules: [
                 {
-                    operations: [UPDATE, DELETE, CONNECT, DISCONNECT],
-                    bind: { user: { id: "$jwt.sub", jwtid: "$jwt.jti"}}
+                    operations: [CREATE, UPDATE, DELETE, CONNECT, DISCONNECT],
+                    bind: { user: { id: "$jwt.sub" }},
+                    bind: { user: { jwtid: "$jwt.jti" }}
                 },
                 {
                     operations: [READ],
                     where: { user: { id: "$jwt.sub" }},
                     where: { user: { jwtid: "$jwt.jti" }}
                 }
+                
             ]
         ) {
         id: ID! @id @readonly
@@ -110,7 +114,8 @@ const typeDefs = `
             rules: [
                 {
                     operations: [CREATE, UPDATE, DELETE, CONNECT, DISCONNECT],
-                    bind: { user: { id: "$jwt.sub", jwtid: "$jwt.jti"}}
+                    bind: { user: { id: "$jwt.sub" }},
+                    bind: { user: { jwtid: "$jwt.jti" }}
                 },
                 {
                     operations: [READ],

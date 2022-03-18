@@ -1,16 +1,15 @@
 import { React, useContext, useEffect} from 'react';
 import Set from './Set'
 import { SettingContext } from '../context/SettingContext';
-import Button from './Button';
 import useSound from 'use-sound';
 import clicksound from "./clicksound.mp3";
 import CountdownAnimation from './CountdownAnimation';
 import './Timer.css';
-import {Flex} from "@chakra-ui/react"; 
-
+import { Flex } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 function Timer() {
-  const {pomodoro, executing, setCurrentTimer, SettingBtn, children, startAnimate, 
+  const {pomodoro, executing, setCurrentTimer, SettingBtn, children, startAnimate,
     startTimer, pauseTimer, updateExecute} = useContext(SettingContext)
   const [play] = useSound(clicksound, {
     sprite: {in: [200, 500]},
@@ -23,28 +22,28 @@ function Timer() {
       width="full"
       justifyContent="center"
       alignItems="center">
-    
+
       <div className="container">
         {pomodoro !== 0 ?
         <>
           <ul className="labels">
             <li>
-              <Button 
-                title="Work" 
-                activeClass={executing.active === 'work' ? 'active-label' : undefined} 
+              <Button
+                title="Work"
+                activeClass={executing.active === 'work' ? 'active-label' : undefined}
                 _callback={() => {
-                  play({id: executing.active === 'work' ? "in" : "in"}); 
+                  play({id: executing.active === 'work' ? "in" : "in"});
                   setCurrentTimer('work');
-                }} 
+                }}
               />
             </li>
             <li>
-              <Button 
-                title="Break" 
-                activeClass={executing.active === 'break' ? 'active-label' : undefined} 
+              <Button
+                title="Break"
+                activeClass={executing.active === 'break' ? 'active-label' : undefined}
                 _callback={() => {
-                  play({id: executing.active === 'work' ? "in" : "in"}); 
-                  setCurrentTimer('break')}} 
+                  play({id: executing.active === 'work' ? "in" : "in"});
+                  setCurrentTimer('break')}}
               />
             </li>
           </ul>
@@ -52,8 +51,8 @@ function Timer() {
           <div className="timer-container">
             <div className="time-wrapper">
                 <CountdownAnimation
-                  key={pomodoro} 
-                  timer={pomodoro} 
+                  key={pomodoro}
+                  timer={pomodoro}
                   animate={startAnimate}
                 >
                   {children}

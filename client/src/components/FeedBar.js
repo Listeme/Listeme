@@ -121,7 +121,7 @@ export default function FeedBar() {
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
-        {Buttons}      
+        {Buttons}
     </VStack>
   );
   return (
@@ -129,11 +129,12 @@ export default function FeedBar() {
       id="feedbar"
       h="4.5rem"
       mx="auto"
-      position={"fixed"}
+      position={"sticky"}
       top={0}
       left={0}
       right={0}
       backgroundColor={bg}
+      zIndex={100}
     >
       {MobileNavContent}
       <Flex

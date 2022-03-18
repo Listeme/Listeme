@@ -1,13 +1,12 @@
 import { React, useContext, useEffect} from 'react';
 import Set from './Set'
 import { SettingContext } from '../context/SettingContext';
-import Button from './Button';
 import useSound from 'use-sound';
 import clicksound from "./clicksound.mp3";
 import CountdownAnimation from './CountdownAnimation';
 import './Timer.css';
-import {Flex} from "@chakra-ui/react";
-
+import { Flex } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 function Timer() {
   const {pomodoro, executing, setCurrentTimer, SettingBtn, children, startAnimate,

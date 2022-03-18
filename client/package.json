@@ -33,7 +33,9 @@
     "sound": "^2.7.0",
     "styled-components": "^5.3.3",
     "use-sound": "^4.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@apollo/client": "^3.5.10",
+    "@chakra-ui/icons": "^1.1.7"
   },
   "scripts": {
     "start": "react-scripts start",

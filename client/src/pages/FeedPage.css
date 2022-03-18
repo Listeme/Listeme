@@ -1,34 +1,3 @@
-@import url("https://cdn.syncfusion.com/ej2/material.css");
-
-.e-calendar {
-  margin:auto;
-  margin-top: 10%;
-  max-width: 500px;
-  max-height: 700px;
-
-}
-
-.FeedPage {
-  text-align: center;
-  background-color: azure;
-  height: 100vh;
-  width: 100vw;
-}
-
-.e-calendar {
-  max-width: 50%;
-  margin:auto;
-  margin-top: 10%;
-  margin-right: 20%;
-
-}
-.e-calendar .e-content table {
-  height: 39.5em;
-
-}
-
-.reorg{
-  margin-top:10em;
-  height:10em;
-  margin-right: 7em;
+.item {
+  background: #f4f4f4;
 }

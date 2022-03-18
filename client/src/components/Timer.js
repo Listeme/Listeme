@@ -11,6 +11,22 @@ import {
 } from '@chakra-ui/react';
 import theme from '../theme';
 import ToggleColorMode from './ColorMode';
+//import { useQuery, gql } from "@apollo/client";
+//import axios from 'axios';
+
+//get task list from query for pomodoro for the user
+//set it to the return so it come out as a card for each task
+//put it left side of the timer
+//each task has its own set timer
+/*const POMODOROS_QUERY = gql`
+  {
+    pomodoros {
+      where
+      options
+    }
+  }
+`;*/
+
 
 function Timer() {
   const {pomodoro, executing, setCurrentTimer, children, startAnimate, 
@@ -18,6 +34,8 @@ function Timer() {
   const [play] = useSound(clicksound, {
     sprite: {in: [200, 500]},
     volume: 0.3});
+  
+  //const { data, loading, error } = useQuery(POMODOROS_QUERY);
 
   useEffect(() => updateExecute(executing), [executing, startAnimate, updateExecute])
   const [newTimer, setNewTimer] = useState({
@@ -26,6 +44,14 @@ function Timer() {
       active: 'work'
   })
 
+  /*const getTaskList = () => {
+    axios
+      .get('http://localhost:4000/tasks')
+      .then((response) => response.data)
+      .then((response) => {
+        state.setState({ taskList: response});
+      });
+  }*/
 
   const handleChange = input => {
       const {name, value} = input.target
@@ -62,7 +88,7 @@ function Timer() {
       <Flex flexDirection="row" justifyContent="flex-end">
         <ToggleColorMode justifySelf="end" />
       </Flex>
-      <Flex flexDirection="row" justifyContent="flex-start" alignItems="center" minH="80vh">
+      <Flex flexDirection="row" justifyContent="center" alignItems="center" minH="80vh">
         <Flex flexDirection="column" justifyContent="center" alignItems="center" alignContent= "center" minH="80vh">
             
         </Flex>

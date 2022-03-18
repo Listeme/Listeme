@@ -5,7 +5,8 @@ import { HStack, VStack,Text, Flex, Badge,Modal,
     ModalFooter,
     ModalBody,
     ModalCloseButton, Button, Input } from '@chakra-ui/react'
-import { DeleteIcon, EditIcon} from '@chakra-ui/icons'
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import TaskCheck from './TaskCheck';
 import React,{useState} from 'react'
 
 
@@ -59,8 +60,9 @@ function handleEditSubmit(e){
           
                 <Flex w="10px" >
                 
-                <DeleteIcon color="red.500" mr="2" onClick={()=>deleteTask(task.id)}/>
-                <EditIcon onClick={()=>handleEditClick(task)} />
+                <TaskCheck task={task} editTask={editTask}/>
+                <DeleteIcon cursor="pointer" color="red.500" mr="2" onClick={()=>deleteTask(task.id)}/>
+                <EditIcon cursor="pointer" onClick={()=>handleEditClick(task)} />
                  
                 </Flex>
                 

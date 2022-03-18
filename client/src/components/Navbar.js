@@ -65,16 +65,17 @@ export default function Navbar() {
       </Button>
     </VStack>
   );
-  return (    
-    <chakra.div 
+  return (
+    <chakra.div
       h="4.5rem"
-      mx="auto" 
+      mx="auto"
       id="navbar"
-      position={"fixed"}
+      position={"sticky"}
       top={0}
       left={0}
       right={0}
       backgroundColor={bg}
+      zIndex={100}
      >
       <Flex
         w="full"
@@ -111,7 +112,7 @@ export default function Navbar() {
               About us
             </Button>
             </ScrollLink>
-            
+
               <ScrollLink active="active" to="features" smooth={true} duration={500}>
                 <Button
                   bg={bg}
@@ -126,7 +127,7 @@ export default function Navbar() {
                   Features
                 </Button>
                 </ScrollLink>
-             
+
             <Button
               bg={bg}
               color="gray.500"
@@ -157,7 +158,7 @@ export default function Navbar() {
             >
               Sign up
             </Button>
-              
+
           </HStack>
           <IconButton
             display={{ base: "flex", md: "none" }}

@@ -1,13 +1,15 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import Landing from "../components/Landing";
+import About from "../components/sections/About";
 import Navbar from "../components/Navbar";
+import Features from "../components/sections/Features";
 
-export default function LandingPage(props) {
+export default function LandingPage() {
   return(
-	<Box>
+	<Box id="home">
 		<Navbar/>
-		<Landing/>
+		<About/>
+		<Features/>
 	</Box>
 	
   	

@@ -1,9 +1,10 @@
 import './Journal.css';
 import { createEditor, Editor, Transforms, Text } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import FolderTree from 'react-folder-tree';
 import { Flex, Button, ButtonGroup } from '@chakra-ui/react';
+import { gql, useLazyQuery, useQuery } from '@apollo/client';
 
 // define our own custom helpers
 const CustomEditor = {
@@ -123,15 +124,67 @@ const treeState = {
     ],
 };
 
+// query to obtain current user's id and name (for note & noteFolder purposes)
+const GET_USER = gql`
+    query GetUser {
+        users {
+            id
+            name
+        }
+    }`;
+
+const GET_DEFAULT_FOLDER = gql`
+    query GetDefaultFolder ($where: NotesFolderWhere) {
+        notesFolders(where: $where) {
+            id
+            name
+        }
+    }`;
+
+// used for note and noteFolder queries later!
+var user_id;
+var user_name;
+
 function Journal() {
+    const [loadUser] = useLazyQuery(GET_USER);
+    const [getDefaultFolder] = useLazyQuery(GET_DEFAULT_FOLDER);
+
+    async function userInfo() {
+        let userInfo = await loadUser();
+        return userInfo;
+    }
+
+    async function defaultFolder() {
+        let defaultFolder = await getDefaultFolder();
+        return defaultFolder;
+    }
+
+    // get the current user after every update
+    useEffect(() => {
+        userInfo().then(res => {
+            console.log("User name and id retrieved");
+            user_id = res.data.users[0].id;
+            user_name = res.data.users[0].name;
+        });
+
+        defaultFolder().then(res => {
+            if (res.data.notesFolders === []) {
+                console.log("No root noteFolder found. Creating one.");
+                // call query here to create noteFolder with name == user_name
+            }
+        });
+    }, []);
+
     // create a Slate editor object that won't change between renders
     const editor = useMemo(() => withReact(createEditor()), [])
 
     // keep track of state for the value of the editor
-    const [value, setValue] = useState([
+    const [value, setValue] = useState(
+        // database should pull currNote here (set a default note id somewhere)
+        JSON.parse(localStorage.getItem('content')) || [
         {
             type: 'paragraph',
-            children: [{ text: 'start typing here :D' }]
+            children: [{ text: 'Start by typing here...' }]
         }
     ])
 
@@ -157,7 +210,24 @@ function Journal() {
               showCheckbox={false}
               initOpenStatus='custom'
             />
-            <Slate editor={editor} value={value} onChange={value => setValue(value)} id="slateEditor">
+            <Slate
+              editor={editor}
+              value={value}
+              onChange={value => {
+                setValue(value)
+
+                const isAstChange = editor.operations.some(
+                    op => 'set_selection' !== op.type
+                )
+                // save the database here
+                // code for how to make database queries in SignUpForm.js
+                if (isAstChange) {
+                    // save value to local storage
+                    const content = JSON.stringify(value)
+                    localStorage.setItem('content', content)
+                }
+              }}
+              id="slateEditor">
                 <Flex flexDirection="column" margin="10px" minWidth="300px">
                 <ButtonGroup variant="outline" spacing="3">
                     <Button

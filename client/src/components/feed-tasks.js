@@ -38,9 +38,6 @@ export default function FeedTasks() {
   const [getTaskInfo] = useLazyQuery(gql(QUERY_TASK));
 
   async function taskInfo(values) {
-    // const { loading, error, data } = useQuery(SIGN_UP, {
-    //     variables: { name: values.name, email: values.email, password: values.password }
-    // });
     // let userid = userid_from_token();
     // let userinfo = await getUserInfo({
     //   variables: {
@@ -65,7 +62,6 @@ export default function FeedTasks() {
     taskInfo().then(res => {
       console.log(res.data.tasks);
       let taskUnfiltered = res.data.tasks;
-      let now = new Date();
       let taskFiltered = taskUnfiltered.filter(task => task.completed === false && in7days(task.endDate));
       console.log(taskFiltered);
       setTasks(taskFiltered);
@@ -74,11 +70,11 @@ export default function FeedTasks() {
 
   return (
     <Box
-      bg={bg}
+      // bg={bg}
       width="100%"
       height="100%"
     >
-      <div class="cardDiv">
+      <div>
         <h1>Upcoming Tasks Due in 7 Days</h1>
         {tasks.map(task => (
           <div key={task.id}>

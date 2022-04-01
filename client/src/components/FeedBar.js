@@ -43,6 +43,7 @@ export default function FeedBar() {
         _focus={{ boxShadow: "none" }}
         textColor={text}
         leftIcon={<AiFillHome />}
+        onClick={() => {window.location.href = "/feed"}}
       >
         Feed
       </Button>
@@ -56,6 +57,7 @@ export default function FeedBar() {
         _focus={{ boxShadow: "none" }}
         textColor={text}
         leftIcon={<AiFillCalendar />}
+        onClick={() => {window.location.href = "/calendar"}}
       >
         Calendar
       </Button>
@@ -69,6 +71,7 @@ export default function FeedBar() {
         _focus={{ boxShadow: "none" }}
         textColor={text}
         leftIcon={<RiTimerFill />}
+        onClick={() => {window.location.href = "/timer"}}
       >
         Pomodoro
       </Button>
@@ -82,6 +85,7 @@ export default function FeedBar() {
         _focus={{ boxShadow: "none" }}
         textColor={text}
         leftIcon={<BsListCheck />}
+        onClick={() => {window.location.href = "/task"}}
       >
         To-do List
       </Button>
@@ -95,6 +99,7 @@ export default function FeedBar() {
         _focus={{ boxShadow: "none" }}
         textColor={text}
         leftIcon={<GiNotebook />}
+        onClick={() => {window.location.href = "/journal"}}
       >
         Journal
       </Button>

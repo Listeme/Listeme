@@ -9,23 +9,7 @@ import {
   ChakraProvider,
   Flex,
 } from '@chakra-ui/react';
-import theme from '../theme';
-import ToggleColorMode from './ColorMode';
-//import { useQuery, gql } from "@apollo/client";
-//import axios from 'axios';
 
-//get task list from query for pomodoro for the user
-//set it to the return so it come out as a card for each task
-//put it left side of the timer
-//each task has its own set timer
-/*const POMODOROS_QUERY = gql`
-  {
-    pomodoros {
-      where
-      options
-    }
-  }
-`;*/
 
 
 function Timer() {
@@ -84,73 +68,68 @@ function Timer() {
   }
   
   return (
-    <ChakraProvider theme={theme}>
-      <Flex flexDirection="row" justifyContent="flex-end">
-        <ToggleColorMode justifySelf="end" />
-      </Flex>
-      <Flex flexDirection="row" justifyContent="center" alignItems="center" minH="80vh">
-        <Flex flexDirection="column" justifyContent="center" alignItems="center" alignContent= "center" minH="80vh">
-            
-        </Flex>
-        <Flex flexDirection="column" justifyContent="center" alignItems="center" aligncontent="center" minH="80vh">
-          <div className="container">
-            <ul className="labels">
-              <li>
-                <Button 
-                  title="Work" 
-                  activeClass={executing.active === 'work' ? 'active-label' : undefined} 
-                  _callback={() => {
-                    play({id: executing.active === 'work' ? "in" : "in"}); 
-                    setCurrentTimer('work');
-                  }} 
-                />
-              </li>
-              <li>
-                <Button 
-                  title="Break" 
-                  activeClass={executing.active === 'break' ? 'active-label' : undefined} 
-                  _callback={() => {
-                    play({id: executing.active === 'work' ? "in" : "in"}); 
-                    setCurrentTimer('break')}} 
-                />
-              </li>
-            </ul>
-          </div>
-          <form noValidate onSubmit={handleSubmit}>
-            <ul className="labels">
-              <div className="active-label">
-                  <input className="input-wrapper" name="work" onChange={handleChange} value={newTimer.work}/>
-                  <input className="input-wrapper" name="break" onChange={handleChange} value={newTimer.break}/>
-              </div>
-            </ul>
-              <div className='settimer-wrapper'>
-                <div className='set-label'>
-                  <button type='submit'>Set Timer</button>
+      <Flex flexDirection="column" justifyContent="center" alignItems="center" aligncontent="center" minH="80vh">
+        <div className="container">
+          <ul className="labels">
+            <li>
+              <Button 
+                title="Work" 
+                activeClass={executing.active === 'work' ? 'active-label' : undefined} 
+                _callback={() => {
+                  play({id: executing.active === 'work' ? "in" : "in"}); 
+                  setCurrentTimer('work');
+                }} 
+              />
+            </li>
+            <li>
+              <Button 
+                title="Break" 
+                activeClass={executing.active === 'break' ? 'active-label' : undefined} 
+                _callback={() => {
+                  play({id: executing.active === 'work' ? "in" : "in"}); 
+                  setCurrentTimer('break')}} 
+              />
+            </li>
+          </ul>
+        </div>
+        <div className='container'>
+          <ul className="labels">
+            <form noValidate onSubmit={handleSubmit}>
+              <ul className="labels">
+                <div className="active-label">
+                    <input className="input-wrapper" name="work" onChange={handleChange} value={newTimer.work}/>
+                    <input className="input-wrapper" name="break" onChange={handleChange} value={newTimer.break}/>
                 </div>
-              </div>
+              </ul>
+                <div className='settimer-wrapper'>
+                  <div className='set-label'>
+                    <button type='submit'>Set Timer</button>
+                  </div>
+                </div>
             
-          </form>
-          <div className="timer-container">
-            <div className="time-wrapper">
-                <CountdownAnimation
-                  key={pomodoro} 
-                  timer={pomodoro} 
-                  animate={startAnimate}
-                >
-                  {children}
-                </CountdownAnimation>
-            </div>
+            </form>
+          </ul>
+        </div>
+        
+        <div className="timer-container">
+          <div className="time-wrapper">
+              <CountdownAnimation
+                key={pomodoro} 
+                timer={pomodoro} 
+                animate={startAnimate}
+              >
+                {children}
+              </CountdownAnimation>
           </div>
-          <div className="button-wrapper">
-            <div className='active-label'>
-              <Button title="Start" activeClass={!startAnimate ? 'active' : undefined} _callback={startTimer} />
-              <Button title="Pause" activeClass={startAnimate ? 'active' : undefined} _callback={pauseTimer} />
-            </div>
+        </div>
+        <div className="button-wrapper">
+          <div className='active-label'>
+            <Button title="Start" activeClass={!startAnimate ? 'active' : undefined} _callback={startTimer} />
+            <Button title="Pause" activeClass={startAnimate ? 'active' : undefined} _callback={pauseTimer} />
           </div>
-        </Flex>
+        </div>
       </Flex>
-    </ChakraProvider>
-  );
+  )
 }
 
 export default Timer;

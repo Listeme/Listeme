@@ -35,6 +35,7 @@ const typeDefs = gql`
         notes: [Note!]! @relationship(type: "OWNED_BY", direction: OUT)
         lastModified: DateTime! @timestamp @readonly
         jwtid: ID! @writeonly
+        homeSettings: String
     }
 
     type Task 
@@ -114,7 +115,7 @@ const typeDefs = gql`
             rules: [
                 {
                     operations: [CREATE, UPDATE, DELETE, CONNECT, DISCONNECT],
-                    bind: { user: { id: "$jwt.sub" }},
+                    bind: { user: { id: "$jwt.sub" }}
                     bind: { user: { jwtid: "$jwt.jti" }}
                 },
                 {

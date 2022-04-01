@@ -3,7 +3,7 @@ import {Box, useColorModeValue} from "@chakra-ui/react";
 import {gql, useLazyQuery, useMutation, useQuery} from "@apollo/client";
 import "./feed-components.css";
 
-export default function FeedTasks() {
+export default function PomoHistory() {
 
   const bg = useColorModeValue('gray.300', 'gray.500');
   const [tasks, setTasks] = useState([]);
@@ -34,10 +34,26 @@ export default function FeedTasks() {
     }
   `
 
+  const QUERY_POMODORO = `
+  query Query {
+      pomodoros {
+          endTime
+          id
+          startTime
+          lastModified
+          task {
+              id
+          }
+      }
+  }
+  `
   // const [getUserInfo] = useLazyQuery(gql(QUERY_USER));
   const [getTaskInfo] = useLazyQuery(gql(QUERY_TASK));
 
   async function taskInfo(values) {
+    // const { loading, error, data } = useQuery(SIGN_UP, {
+    //     variables: { name: values.name, email: values.email, password: values.password }
+    // });
     // let userid = userid_from_token();
     // let userinfo = await getUserInfo({
     //   variables: {
@@ -51,6 +67,7 @@ export default function FeedTasks() {
     return taskInfo;
   }
 
+  
   function in7days(date) {
     let endDate = new Date(date);
     let today = new Date();
@@ -62,6 +79,7 @@ export default function FeedTasks() {
     taskInfo().then(res => {
       console.log(res.data.tasks);
       let taskUnfiltered = res.data.tasks;
+      let now = new Date();
       let taskFiltered = taskUnfiltered.filter(task => task.completed === false && in7days(task.endDate));
       console.log(taskFiltered);
       setTasks(taskFiltered);
@@ -70,12 +88,12 @@ export default function FeedTasks() {
 
   return (
     <Box
-      // bg={bg}
+      bg={bg}
       width="100%"
       height="100%"
     >
-      <div>
-        <h1>Upcoming Tasks Due in 7 Days</h1>
+      <div class="cardDiv">
+        <h1>Recent history in 7 Days</h1>
         {tasks.map(task => (
           <div key={task.id}>
             <p>{task.name}</p>

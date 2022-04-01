@@ -3,6 +3,7 @@ import useSound from 'use-sound';
 import alarm from "../components/alarm-clock-01.mp3";
 import clock from "../components/clock-ticking-1.mp3";
 import clicksound from "../components/clicksound.mp3";
+import {gql, useLazyQuery, useMutation, useQuery} from "@apollo/client";
 
 export const SettingContext = createContext()
 function SettingContextProvider(props) {

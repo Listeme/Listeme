@@ -4,7 +4,7 @@ import { Slate, Editable, withReact } from 'slate-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import FolderTree from 'react-folder-tree';
 import { Flex, Button, ButtonGroup } from '@chakra-ui/react';
-import { gql, useLazyQuery, useQuery } from '@apollo/client';
+import { gql, useLazyQuery, useMutation } from '@apollo/client';
 
 // define our own custom helpers
 const CustomEditor = {
@@ -133,60 +133,213 @@ const GET_USER = gql`
         }
     }`;
 
-const GET_DEFAULT_FOLDER = gql`
-    query GetDefaultFolder ($where: NotesFolderWhere) {
+const GET_ROOT_FOLDER = gql`
+    query GetRootFolder($where: NotesFolderWhere) {
         notesFolders(where: $where) {
             id
             name
         }
     }`;
 
+const CREATE_ROOT_FOLDER = gql`
+    mutation CreateRootFolder($input: [NotesFolderCreateInput!]!) {
+        createNotesFolders(input: $input) {
+            notesFolders {
+                id
+                name
+            }
+        }
+    }`;
+
+const GET_NOTES = gql`
+    query GetNotes {
+        notes {
+            id
+            title
+            content
+        }
+    }`;
+
+const CREATE_NOTE = gql`
+    mutation CreateNote($input: [NoteCreateInput!]!) {
+        createNotes(input: $input) {
+            notes {
+                id
+                title
+            }
+        }
+    }`;
+
+const ADD_NOTE_TO_FOLDER = gql`
+    mutation AddNoteToRootFolder($where: NotesFolderWhere, $update: NotesFolderUpdateInput) {
+        updateNotesFolders(where: $where, update: $update) {
+            notesFolders {
+                id
+                notes {
+                    id
+                    title
+                }
+            }
+        }
+    }`;
+
+const GET_NOTE = gql`
+    query GetNote($where: NoteWhere) {
+        notes(where: $where) {
+            id
+            title
+            content
+        }
+    }`;
+
+const UPDATE_NOTE = gql`
+    mutation EditNote($where: NoteWhere, $update: NoteUpdateInput) {
+        updateNotes(where: $where, update: $update) {
+            notes {
+                id
+                title
+                content
+            }
+        }
+    }`;
+
 // used for note and noteFolder queries later!
 var user_id;
 var user_name;
+var currNoteID = null; // store id of current note here
 
 function Journal() {
+    // queries
     const [loadUser] = useLazyQuery(GET_USER);
-    const [getDefaultFolder] = useLazyQuery(GET_DEFAULT_FOLDER);
+    const [getRootFolder] = useLazyQuery(GET_ROOT_FOLDER, { variables: { "where": { "name": user_name } } });
+    const [getNotes] = useLazyQuery(GET_NOTES);
+    const [getCurrNote] = useLazyQuery(GET_NOTE, { variables: { "where": { "id": currNoteID } } });
+
+    // mutations
+    const [makeRootFolder, { data }] = useMutation(CREATE_ROOT_FOLDER);
+    const [makeNote] = useMutation(CREATE_NOTE); // pass in variables when calling
+    const [addNoteToFolder] = useMutation(ADD_NOTE_TO_FOLDER);
+    const [updateNote] = useMutation(UPDATE_NOTE);
 
     async function userInfo() {
         let userInfo = await loadUser();
         return userInfo;
     }
 
-    async function defaultFolder() {
-        let defaultFolder = await getDefaultFolder();
-        return defaultFolder;
+    async function rootFolder() {
+        let rootFolder = await getRootFolder();
+        return rootFolder;
     }
 
-    // get the current user after every update
+    async function userNotes() {
+        let userNotes = await getNotes();
+        return userNotes;
+    }
+
+    async function currNote() {
+        let currNote = await getCurrNote();
+        return currNote;
+    }
+
+    // get the current user, check the root folder, and currNoteID after every update
     useEffect(() => {
         userInfo().then(res => {
             console.log("User name and id retrieved");
             user_id = res.data.users[0].id;
             user_name = res.data.users[0].name;
-        });
 
-        defaultFolder().then(res => {
-            if (res.data.notesFolders === []) {
-                console.log("No root noteFolder found. Creating one.");
-                // call query here to create noteFolder with name == user_name
-            }
+            // now that the user has been retrived, do rootFolder stuff
+            rootFolder().then(res => {
+                if (res.data.notesFolders.length === 0) {
+                    console.log("No root noteFolder found. Creating one.");
+                    // creates Default folder
+                    makeRootFolder({ variables:  {
+                        "input": [
+                          {
+                            "name": user_name,
+                            "notes": { "create": [] },
+                            "subfolders": { "create": [] },
+                            "user": { "connect": { "where": { "node": { "id": user_id }}}}}
+                        ]}}).then(res => {
+                            console.log(`Created root folder with name ${res.data.createNotesFolders.notesFolders[0].name}`);
+                        });
+                }
+                else {
+                    console.log("Root folder exists!");
+                }
+                userNotes().then(res => {
+                    if (res.data.notes.length === 0) {
+                        console.log("No notes detected, making a new note.");
+                        // create a new note and set as currNoteID
+                        makeNote({ variables: {
+                            "input": [
+                              {
+                                "title": "",
+                                "content": JSON.stringify([{"type":"paragraph","children":[{"text":"New Note!"}]}]),
+                                "user": { "connect": { "where": { "node": { "id": user_id }}}}
+                              }]}}).then(res => {
+                                    console.log("Created new blank note!");
+                                    currNoteID = res.data.createNotes.notes[0].id;
+
+                                    // add the new note to the root folder
+                                    addNoteToFolder({ variables: {
+                                        "where": {
+                                        "name": user_name
+                                        },
+                                        "update": {
+                                        "notes": [
+                                            { "connect": [
+                                                { "where": { "node": { "id": currNoteID } } }
+                                            ]
+                                            }
+                                        ]
+                                        }}}).then(() => {
+                                        console.log("connected new note to root folder");
+                                    });
+                              });
+                    }
+                    else if (currNoteID == null){
+                        // set the first note in the result as the currNoteID *if* currNoteID has no value
+                        console.log("currNoteID is null, setting to first note for user");
+                        currNoteID = res.data.notes[0].id;
+                        // also use setValue to ensure the editor's value is also updated
+                        editor.children = JSON.parse(res.data.notes[0].content);
+                        setValue(JSON.parse(res.data.notes[0].content));
+                    }
+                })
+            });
         });
-    }, []);
+    }, [currNoteID]);
+
 
     // create a Slate editor object that won't change between renders
     const editor = useMemo(() => withReact(createEditor()), [])
 
     // keep track of state for the value of the editor
-    const [value, setValue] = useState(
-        // database should pull currNote here (set a default note id somewhere)
-        JSON.parse(localStorage.getItem('content')) || [
+    const [value, setValue] = useState(() => {
+        var content = null;
+        // for some reason this is happening before currNoteID gets set
+        // need this to run AFTER userNotes() inside useEffect sets var of currNoteID
+        if (currNoteID == null) {
+            console.log("currNoteID is null during initial value setting");
+            // set currNoteID to a valid value then!!!
+            return [{"type":"paragraph","children":[{"text":""}]}];
+        }
+        currNote().then(res => {
+            console.log(res.data);
+            content = res.data.notes[0].content;
+            console.log("Content retrieved from db");
+            return content; // returns content from db if it isnt empty
+        });
+    }
+        // query for the current note here
+        /* JSON.parse(localStorage.getItem('content')) || [
         {
             type: 'paragraph',
             children: [{ text: 'Start by typing here...' }]
         }
-    ])
+    ] */
+    )
 
     const renderElement = useCallback(props => {
         switch (props.element.type) {
@@ -204,6 +357,16 @@ function Journal() {
     // render the journal
     return (
         <Flex flexDirection="row">
+            <Button
+                onMouseDown={event => {
+                    console.log("This should make a pop up to create a new note");
+                }}
+            >New Note</Button>
+            <Button
+                onMouseDown={event => {
+                    console.log("This should make a pop up to create a new folder");
+                }}
+            >New Folder</Button>
             <FolderTree
               id="folderTree"
               data={treeState}
@@ -219,12 +382,22 @@ function Journal() {
                 const isAstChange = editor.operations.some(
                     op => 'set_selection' !== op.type
                 )
-                // save the database here
-                // code for how to make database queries in SignUpForm.js
                 if (isAstChange) {
-                    // save value to local storage
+                    // changes have been made so save content to note specified by currNoteID!
                     const content = JSON.stringify(value)
-                    localStorage.setItem('content', content)
+
+                    // save content to db
+                    updateNote({ variables: {
+                        "where": {
+                          "id": currNoteID
+                        },
+                        "update": {
+                          "title": "",
+                          "content": content
+                        }
+                      }}).then(() => {
+                          console.log("Note updated in db");
+                      });
                 }
               }}
               id="slateEditor">
@@ -313,8 +486,5 @@ function Journal() {
         </Flex>
     );
 }
-
-// TODO:
-// add multiple note functionality once db is connected
 
 export default Journal;

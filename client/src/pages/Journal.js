@@ -114,7 +114,7 @@ const treeState = {
     name: 'Sample Workspace',
     isOpen: true,
     children: [
-        { name: 'Inside the sample workspace'},
+        { name: 'Inside the sample workspace', extra: 'it should ignore this'},
         { name: 'Man this is a lot of samples huh' },
         { name: 'somebody\'s been working hard' },
         { name: "our hypothetical user", children: [
@@ -203,6 +203,24 @@ const UPDATE_NOTE = gql`
         }
     }`;
 
+const GET_ALL_NOTES_AND_FOLDERS = gql`
+query GetAllNotesAndFolders {
+    notesFolders {
+        notes {
+            id
+            title
+        }
+        subfolders {
+            id
+            name
+            notes {
+                id
+                title
+            }
+        }
+    }
+}`;
+
 // used for note and noteFolder queries later!
 var user_id;
 var user_name;
@@ -214,6 +232,7 @@ function Journal() {
     const [getRootFolder] = useLazyQuery(GET_ROOT_FOLDER, { variables: { "where": { "name": user_name } } });
     const [getNotes] = useLazyQuery(GET_NOTES);
     const [getCurrNote] = useLazyQuery(GET_NOTE, { variables: { "where": { "id": currNoteID } } });
+    const [getAllNotesAndFolders] = useLazyQuery(GET_ALL_NOTES_AND_FOLDERS);
 
     // mutations
     const [makeRootFolder, { data }] = useMutation(CREATE_ROOT_FOLDER);
@@ -239,6 +258,11 @@ function Journal() {
     async function currNote() {
         let currNote = await getCurrNote();
         return currNote;
+    }
+
+    async function allNotes() {
+        let allNotes = await getAllNotesAndFolders();
+        return allNotes;
     }
 
     // get the current user, check the root folder, and currNoteID after every update
@@ -331,15 +355,7 @@ function Journal() {
             console.log("Content retrieved from db");
             return content; // returns content from db if it isnt empty
         });
-    }
-        // query for the current note here
-        /* JSON.parse(localStorage.getItem('content')) || [
-        {
-            type: 'paragraph',
-            children: [{ text: 'Start by typing here...' }]
-        }
-    ] */
-    )
+    });
 
     const renderElement = useCallback(props => {
         switch (props.element.type) {

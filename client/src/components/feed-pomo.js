@@ -7,7 +7,7 @@ export default function FeedPomo() {
 
   return (
     <Box
-      bg={bg}
+      // bg={bg}
       width="100%"
       height="100%"
     >

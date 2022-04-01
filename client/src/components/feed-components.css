@@ -2,6 +2,27 @@
     list-style-position: inside
 }
 
-.cardDiv {
-    padding: 1rem;
+.outerBox {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.titleIcon {
+    align-self: center;
+    font-size: 1.2em;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
+
+.titleBar {
+    display: flex;
+    align-items: center;
 }
